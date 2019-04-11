@@ -4,32 +4,20 @@ import './css/style.css';
 import './fonts/icomoon/style.css'
 import './css/bootstrap.min.css'
 import './css/magnific-popup.css'
-// import './css/jquery-ui.css'
-// import './css/owl.carousel.min.css'
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './css/owl.theme.default.min.css'
 import './css/aos.css'
 import './css/style.css'
 import logo from './images/Logo.png'; // with import
+import teams from './components/Teams.js';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div>
       <title>Sportz — Colorlib Sports Team Template</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700" />
-      <link rel="stylesheet" href="fonts/icomoon/style.css" />
-      <link rel="stylesheet" href="css/bootstrap.min.css" />
-      <link rel="stylesheet" href="css/magnific-popup.css" />
-      <link rel="stylesheet" href="css/jquery-ui.css" />
-      <link rel="stylesheet" href="css/owl.carousel.min.css" />
-      <link rel="stylesheet" href="css/owl.theme.default.min.css" />
-      <link rel="stylesheet" href="css/aos.css" />
-      <link rel="stylesheet" href="css/style.css" />
-      <div className="site-wrap">
+          <div className="site-wrap">
         <div className="site-mobile-menu">
           <div className="site-mobile-menu-header">
             <div className="site-mobile-menu-logo">
@@ -61,12 +49,12 @@ class App extends Component {
           <nav className="site-navigation position-relative text-right bg-black text-md-right" role="navigation">
             <div className="container position-relative">
               <div className="site-logo">
-                <a href="index.html"><img src={logo} width="150" height="150" /></a>
+                <a href="/"><img src={logo} width="150" height="150" /></a>
               </div>
               <div className="d-inline-block d-md-none ml-md-0 mr-auto py-3"><a href="#" className="site-menu-toggle js-menu-toggle text-white"><span className="icon-menu h3" /></a></div>
               <ul className="site-menu js-clone-nav d-none d-md-block">
                 <li className="has-children active">
-                  <a href="index.html">Home</a>
+                  <a href="/">Home</a>
                   <ul className="dropdown arrow-top">
                     <li><a href="#">Menu One</a></li>
                     <li><a href="#">Menu Two</a></li>
@@ -90,7 +78,7 @@ class App extends Component {
                   </ul>
                 </li>
                 <li><a href="matches.html">Matches</a></li>
-                <li><a href="team.html">Team</a></li>
+                <li><a href="/Teams">Teams</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
               </ul>
