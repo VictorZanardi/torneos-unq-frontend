@@ -6,12 +6,14 @@ import './css/bootstrap.min.css'
 import './css/magnific-popup.css'
 // import './css/jquery-ui.css'
 // import './css/owl.carousel.min.css'
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
+//import 'owl.carousel/dist/assets/owl.carousel.css';
+//import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './css/owl.theme.default.min.css'
 import './css/aos.css'
 import './css/style.css'
 import logo from './images/Logo.png'; // with import
+import LoadTeam from './componet/LoadTeam';
+//import { BrowserRouter, Route, Switch,Redirect} from 'react-router-dom';
 
 class App extends Component {
   render() {
@@ -25,7 +27,7 @@ class App extends Component {
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <link rel="stylesheet" href="css/magnific-popup.css" />
       <link rel="stylesheet" href="css/jquery-ui.css" />
-      <link rel="stylesheet" href="css/owl.carousel.min.css" />
+      //<link rel="stylesheet" href="css/owl.carousel.min.css" />
       <link rel="stylesheet" href="css/owl.theme.default.min.css" />
       <link rel="stylesheet" href="css/aos.css" />
       <link rel="stylesheet" href="css/style.css" />
@@ -93,11 +95,13 @@ class App extends Component {
                 <li><a href="team.html">Team</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html">Cargar Equipo</a></li>
               </ul>
             </div>
           </nav>
         </header>
 
+        <LoadTeam/>
         <div className="site-blocks-vs site-section bg-light">
           <div className="container">
             <div className="border mb-3 rounded d-block d-lg-flex align-items-center p-3 next-match">
