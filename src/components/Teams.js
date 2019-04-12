@@ -10,6 +10,11 @@ import axios from 'axios';
 import image from '../images/img_1_sq.jpg';
 import imageBanner from '../images/hero_bg_3.jpg';
 
+var sectionStyle = {
+    width: "100%",
+    height: "600px",
+    backgroundImage: "url(" +"https://www.hoysejuega.com/uploads/cgblog/id462/Amateurismo_universitario.jpg" + ")"
+};
 class Teams extends Component {
 
   constructor(props) {
@@ -18,6 +23,7 @@ class Teams extends Component {
             name: this.props.match.params.name,
             id:this.props.match.params.id,
             players: [],
+            checked:false
         };
     }
 
@@ -27,9 +33,19 @@ class Teams extends Component {
             .then(data => this.setState({players: data}));
       }
 
+
+      handleCheck(state) {
+        var msg;
+        if (state) {
+          msg = "Es estudiante";
+        } else {
+          msg = "No Es estudiante";
+        }}
+
   render() {
+    var msg;
+
     const {players} = this.state;
-    console.log(players);
 
     return (
       <div>
@@ -106,23 +122,15 @@ class Teams extends Component {
          </div>
        </nav>
      </header>
-     <div className="site-blocks-cover overlay" style={{backgroundImage: <img src={imageBanner} alt="Image"/>}} data-aos="fade" data-stellar-background-ratio="0.5">
-       <div className="container">
-         <div className="row align-items-center justify-content-start">
-           <div className="col-md-6 text-center text-md-left" data-aos="fade-up" data-aos-delay={400}>
-             <h1 className="bg-text-line">Meet The Team</h1>
-             <p className="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad maxime velit nostrum praesentium voluptatem. Mollitia perferendis dolore dolores.</p>
-           </div>
-         </div>
-       </div>
-     </div>
 
+     <div className="site-section" style={sectionStyle}>
+     </div>
 
      <div className="site-section">
        <div className="container">
          <div className="row">
            <div className="col-md-12 text-center mb-5">
-             <h2 className="text-black">Team</h2>
+             <h2 className="text-black">Equipo</h2>
            </div>
          </div>
          <div className="row">
@@ -133,6 +141,8 @@ class Teams extends Component {
                   <a ><img src={image} alt="Image" className="img-fluid image rounded-circle" /></a>
                   <h2>{ player.name}</h2>
                   <h2>{ player.lastName}</h2>
+                  <input type="checkbox" onChange={this.handleCheck()} checked={player.isStudent}/>
+                          <p>{msg}.</p>
                   <span className="position">Coach</span>
                 </div>
                 </div>
@@ -150,43 +160,7 @@ class Teams extends Component {
                <h3 className="footer-heading mb-4">About Sportz</h3>
                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque, consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima minus odio!</p>
              </div>
-             <div className="mb-5">
-               <h3 className="footer-heading mb-4">Recent Blog</h3>
-               <div className="block-25">
-                 <ul className="list-unstyled">
-                   <li className="mb-3">
-                     <a href="#" className="d-flex">
-                       <figure className="image mr-4">
-                         <img src="images/img_1.jpg" alt className="img-fluid" />
-                       </figure>
-                       <div className="text">
-                         <h3 className="heading font-weight-light">Lorem ipsum dolor sit amet consectetur elit</h3>
-                       </div>
-                     </a>
-                   </li>
-                   <li className="mb-3">
-                     <a href="#" className="d-flex">
-                       <figure className="image mr-4">
-                         <img src="images/img_1.jpg" alt className="img-fluid" />
-                       </figure>
-                       <div className="text">
-                         <h3 className="heading font-weight-light">Lorem ipsum dolor sit amet consectetur elit</h3>
-                       </div>
-                     </a>
-                   </li>
-                   <li className="mb-3">
-                     <a href="#" className="d-flex">
-                       <figure className="image mr-4">
-                         <img src="images/img_1.jpg" alt className="img-fluid" />
-                       </figure>
-                       <div className="text">
-                         <h3 className="heading font-weight-light">Lorem ipsum dolor sit amet consectetur elit</h3>
-                       </div>
-                     </a>
-                   </li>
-                 </ul>
-               </div>
-             </div>
+
            </div>
            <div className="col-lg-4 mb-5 mb-lg-0">
              <div className="row mb-5">
@@ -209,48 +183,27 @@ class Teams extends Component {
                    <li><a href="#">Membership</a></li>
                  </ul>
                </div>
-             </div>
-             <div className="row">
-               <div className="col-md-12">
-                 <h3 className="footer-heading mb-4">Follow Us</h3>
-                 <div>
-                   <a href="#" className="pl-0 pr-3"><span className="icon-facebook" /></a>
-                   <a href="#" className="pl-3 pr-3"><span className="icon-twitter" /></a>
-                   <a href="#" className="pl-3 pr-3"><span className="icon-instagram" /></a>
-                   <a href="#" className="pl-3 pr-3"><span className="icon-linkedin" /></a>
-                 </div>
-               </div>
-             </div>
-           </div>
-           <div className="col-lg-4 mb-5 mb-lg-0">
-             <div className="mb-5">
-               <h3 className="footer-heading mb-4">Watch Video</h3>
-               <div className="block-16">
-                 <figure>
-                   <img src="images/img_1.jpg" alt="Image placeholder" className="img-fluid rounded" />
-                   <a href="https://vimeo.com/channels/staffpicks/93951774" className="play-button popup-vimeo"><span className="icon-play" /></a>
-                 </figure>
-               </div>
-             </div>
-             <div className="mb-5">
-               <h3 className="footer-heading mb-2">Subscribe Newsletter</h3>
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit minima minus odio.</p>
-               <form action="#" method="post">
-                 <div className="input-group mb-3">
-                   <input type="text" className="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2" />
-                   <div className="input-group-append">
-                     <button className="btn btn-primary" type="button" id="button-addon2">Send</button>
+               <div className="row">
+                 <div className="col-md-12">
+                   <h3 className="footer-heading mb-4">Follow Us</h3>
+                   <div>
+                     <a href="#" className="pl-0 pr-3"><span className="icon-facebook" /></a>
+                     <a href="#" className="pl-3 pr-3"><span className="icon-twitter" /></a>
+                     <a href="#" className="pl-3 pr-3"><span className="icon-instagram" /></a>
+                     <a href="#" className="pl-3 pr-3"><span className="icon-linkedin" /></a>
                    </div>
                  </div>
-               </form>
+               </div>
              </div>
+
            </div>
+
          </div>
          <div className="row pt-5 mt-5 text-center">
            <div className="col-md-12">
              <p>
                {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-               Copyright © All rights reserved | This template is made with <i className="icon-heart-o" aria-hidden="true" /> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+               Copyright © All rights reserved | This template is made with <i className="icon-heart-o" aria-hidden="true" /> by <a href="https://www.unq.edu.ar" target="_blank">UNQ</a>
                {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
              </p>
            </div>
