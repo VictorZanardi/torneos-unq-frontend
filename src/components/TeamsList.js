@@ -9,36 +9,30 @@ import '../css/style.css'
 import axios from 'axios';
 import image from '../images/img_1_sq.jpg';
 import imageBanner from '../images/hero_bg_3.jpg';
-import { BrowserRouter, Route, Switch,Redirect} from 'react-router-dom';
+import Teams from './Teams';
+import {Link} from 'react-router-dom';
 
-var sectionStyle = {
-    width: "100%",
-    height: "600px",
-    backgroundImage: "url(" +"https://www.hoysejuega.com/uploads/cgblog/id462/Amateurismo_universitario.jpg" + ")"
-};
-class Teams extends Component {
+class TeamsList extends React.Component {
 
-  constructor(props) {
+	constructor(props) {
         super(props);
+
         this.state = {
-            id:this.props.match.params.id,
-            name: this.props.match.params.name,
-            players: []
+            teams: []
         };
     }
 
-      componentDidMount() {
-        fetch('http://localhost:8080/api/TeamBy/'+this.state.id)
+    componentDidMount() {
+        fetch('http://localhost:8080/api/teams')
             .then(response => response.json())
-            .then(data => this.setState({players: data}));
-      }
+            .then(data => this.setState({teams: data}));
+    }
 
-  render() {
-    var msg;
+    render() {
 
-    const {players} = this.state;
+    	const {teams} = this.state;
 
-    return (
+    	return (
       <div>
 
      <title>Sportz — Colorlib Sports Team Template</title>
@@ -117,25 +111,23 @@ class Teams extends Component {
 
      <div className="site-section">
        <div className="container">
-         <div className="row">
-           <div className="col-md-12 text-center mb-5">
-             <h2 className="text-black">{this.state.name}</h2>
-           </div>
-         </div>
-         <div className="row">
-            {players.map((player) =>
-              <div className="mb-4 mb-lg-0 col-6 col-md-4 col-lg-2 text-center">
-                <div className="player mb-5">
-                  <span className="team-number">10</span>
-                  <a ><img src={player.photo} alt="Image" className="img-fluid image rounded-circle" /></a>
-                  <h2>{player.name}</h2>
-                  <h2>{player.lastName}</h2>
-                  <h2>{'DNI: '+ player.dni}</h2>
-                </div>
-                </div>
-            )}
+       <h2 className="text-black">Equipos</h2>
+         <div className="row text-center">
+         
+         {teams.map((team) =>
+
+         	<div className = "row">
+         	<li></li>
+         	<div className="col-lg-3 col-md-6 mb-4">{team.name}
+         	</div>
+         	<div className="col-lg-3 col-md-6 mb-4">
+         		<Link to= {"/teamsBy/" + team.id + "/" + team.name} className="btn btn-primary">Ver plantilla</Link>
+         	</div>
+         	</div>
+         )}
 
          </div>
+
        </div>
      </div>
 
@@ -202,7 +194,6 @@ class Teams extends Component {
  </div>
 
       );
-    }
-  }
+	}
 
-export default Teams;
+}export default TeamsList;

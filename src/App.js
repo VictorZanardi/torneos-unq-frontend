@@ -8,9 +8,9 @@ import './css/owl.theme.default.min.css'
 import './css/aos.css'
 import './css/style.css'
 import logo from './images/Logo.png'; // with import
-import teams from './components/Teams.js';
-import LoadTeam from './componet/LoadTeam';
-//import { BrowserRouter, Route, Switch,Redirect} from 'react-router-dom';
+import Teams from './components/Teams.js';
+import LoadTeam from './components/LoadTeam';
+import { BrowserRouter, Route, Switch,Redirect} from 'react-router-dom';
 
 class App extends React.Component {
   render() {
@@ -80,16 +80,15 @@ class App extends React.Component {
                   </ul>
                 </li>
                 <li><a href="matches.html">Matches</a></li>
-                <li><a href="/Teams">Teams</a></li>
+                <li><a href="/TeamsList">Teams</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="contact.html">Cargar Equipo</a></li>
+                <li><a href="/LoadTeam">Cargar Equipo</a></li>
               </ul>
             </div>
           </nav>
         </header>
 
-        <LoadTeam/>
         <div className="site-blocks-vs site-section bg-light">
           <div className="container">
             <div className="border mb-3 rounded d-block d-lg-flex align-items-center p-3 next-match">

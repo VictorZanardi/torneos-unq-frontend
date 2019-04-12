@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../css/style.css';
 import '../fonts/icomoon/style.css'
 import '../css/bootstrap.min.css'
@@ -6,39 +6,45 @@ import '../css/magnific-popup.css'
 import '../css/owl.theme.default.min.css'
 import '../css/aos.css'
 import '../css/style.css'
-import axios from 'axios';
-import image from '../images/img_1_sq.jpg';
-import imageBanner from '../images/hero_bg_3.jpg';
-import { BrowserRouter, Route, Switch,Redirect} from 'react-router-dom';
+import axios, { post } from 'axios';
 
-var sectionStyle = {
-    width: "100%",
-    height: "600px",
-    backgroundImage: "url(" +"https://www.hoysejuega.com/uploads/cgblog/id462/Amateurismo_universitario.jpg" + ")"
-};
-class Teams extends Component {
+class LoadTeam extends React.Component {
 
-  constructor(props) {
-        super(props);
-        this.state = {
-            id:this.props.match.params.id,
-            name: this.props.match.params.name,
-            players: []
-        };
-    }
+	constructor(props) {
+    	super(props);
+    	this.state ={
+      		file:null
+    	}
+    	this.onFormSubmit = this.onFormSubmit.bind(this)
+    	this.onChange = this.onChange.bind(this)
+    	this.fileUpload = this.fileUpload.bind(this)
+  	}
 
-      componentDidMount() {
-        fetch('http://localhost:8080/api/TeamBy/'+this.state.id)
-            .then(response => response.json())
-            .then(data => this.setState({players: data}));
-      }
+  	onFormSubmit(e){
+    	e.preventDefault() // Stop form submit
+    	this.fileUpload(this.state.file).then((response)=>{
+      		alert("Carga Exitosa");
+    	})
+  	}
+  
+  	onChange(e) {
+    	this.setState({file:e.target.files[0]})
+  	}
+  
+  	fileUpload(file){
+    	const url = 'http://localhost:8080/api/uploadTeam';
+    	const formData = new FormData();
+    	formData.append('file',file)
+    	const config = {
+        	headers: {
+            	'content-type': 'multipart/form-data'
+        	}
+    	}
+    	return  post(url, formData,config)
+  	}
 
-  render() {
-    var msg;
-
-    const {players} = this.state;
-
-    return (
+	render() {
+    	return (
       <div>
 
      <title>Sportz — Colorlib Sports Team Template</title>
@@ -106,10 +112,10 @@ class Teams extends Component {
                </ul>
              </li>
              <li><a href="matches.html">Matches</a></li>
-             <li className="active"><a href="/TeamsList">Teams</a></li>
+             <li><a href="/Teams">Teams</a></li>
              <li><a href="about.html">About</a></li>
              <li><a href="contact.html">Contact</a></li>
-             <li><a href="/LoadTeam">Cargar Equipo</a></li>
+             <li className="active"><a href="/LoadTeam">Cargar Equipo</a></li>
            </ul>
          </div>
        </nav>
@@ -118,24 +124,19 @@ class Teams extends Component {
      <div className="site-section">
        <div className="container">
          <div className="row">
+          <div className="col-md-12 text-center mb-5">
+             <h2 className="text-black">En esta seccion pobra cargar los equipos con sus respectivos jugadores</h2>
+           </div>
            <div className="col-md-12 text-center mb-5">
-             <h2 className="text-black">{this.state.name}</h2>
+             <h6 className="text-black">Aclaración: chequear que los datos en el excel estan correctos antes de cargar el equipo.</h6>
            </div>
          </div>
-         <div className="row">
-            {players.map((player) =>
-              <div className="mb-4 mb-lg-0 col-6 col-md-4 col-lg-2 text-center">
-                <div className="player mb-5">
-                  <span className="team-number">10</span>
-                  <a ><img src={player.photo} alt="Image" className="img-fluid image rounded-circle" /></a>
-                  <h2>{player.name}</h2>
-                  <h2>{player.lastName}</h2>
-                  <h2>{'DNI: '+ player.dni}</h2>
-                </div>
-                </div>
-            )}
+         
+         <form onSubmit={this.onFormSubmit}>
+          <input type="file" onChange={this.onChange} />
+          <button type="submit" class="btn btn-warning">Cargar</button>
+        </form>
 
-         </div>
        </div>
      </div>
 
@@ -202,7 +203,7 @@ class Teams extends Component {
  </div>
 
       );
-    }
-  }
+  	}
 
-export default Teams;
+}
+export default LoadTeam;
