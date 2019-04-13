@@ -69,7 +69,7 @@ class LoadTeam extends React.Component {
          <div className="container">
            <div className="row align-items-center">
              <div className="col-6 col-md-3">
-               <a href="#" className="text-secondary px-2 pl-0"><span className="icon-facebook" /></a>
+               <a href="https://www.facebook.com/UNQDeportes" className="text-secondary px-2 pl-0"><span className="icon-facebook" /></a>
                <a href="#" className="text-secondary px-2"><span className="icon-instagram" /></a>
                <a href="#" className="text-secondary px-2"><span className="icon-twitter" /></a>
                <a href="#" className="text-secondary px-2"><span className="icon-linkedin" /></a>
@@ -105,17 +105,17 @@ class LoadTeam extends React.Component {
                   </ul> */}
                 </li>
                 <li> {/*className="has-children"*/}
-                  <a href="news.html">Noticias</a>
+                  <a href="#">Noticias</a>
                   {/* <ul className="dropdown arrow-top">
                     <li><a href="#">Menu One</a></li>
                     <li><a href="#">Menu Two</a></li>
                     <li><a href="#">Menu Three</a></li>
                   </ul> */}
                 </li> 
-                <li><a href="matches.html">Partidos</a></li>
+                <li><a href="#">Partidos</a></li>
                 <li><a href="/TeamsList">Equipos</a></li>
-                <li><a href="about.html">Acerca de</a></li>
-                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Contacto</a></li>
                 <li><a href="/LoadTeam">Cargar Equipo</a></li>
            </ul>
          </div>
@@ -142,63 +142,61 @@ class LoadTeam extends React.Component {
      </div>
 
      <footer className="site-footer border-top">
-       <div className="container">
-         <div className="row">
-           <div className="col-lg-4">
-             <div className="mb-5">
-               <h3 className="footer-heading mb-4">About Sportz</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque, consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima minus odio!</p>
-             </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-4">
+                <div className="mb-5">
+                  <h3 className="footer-heading mb-4">Torneos Internos</h3>
+                  <p>El deporte y la actividad física constituyen derechos que deben ser garantizados en todo el territorio nacional en tanto prácticas que promuevan la inclusión social, la integración y el desarrollo humano integral.</p>
+                </div>
 
-           </div>
-           <div className="col-lg-4 mb-5 mb-lg-0">
-             <div className="row mb-5">
-               <div className="col-md-12">
-                 <h3 className="footer-heading mb-4">Quick Menu</h3>
-               </div>
-               <div className="col-md-6 col-lg-6">
-                 <ul className="list-unstyled">
-                   <li><a href="#">Home</a></li>
-                   <li><a href="#">Matches</a></li>
-                   <li><a href="#">News</a></li>
-                   <li><a href="#">Team</a></li>
-                 </ul>
-               </div>
-               <div className="col-md-6 col-lg-6">
-                 <ul className="list-unstyled">
-                   <li><a href="#">About Us</a></li>
-                   <li><a href="#">Privacy Policy</a></li>
-                   <li><a href="#">Contact Us</a></li>
-                   <li><a href="#">Membership</a></li>
-                 </ul>
-               </div>
-               <div className="row">
-                 <div className="col-md-12">
-                   <h3 className="footer-heading mb-4">Follow Us</h3>
-                   <div>
-                     <a href="#" className="pl-0 pr-3"><span className="icon-facebook" /></a>
-                     <a href="#" className="pl-3 pr-3"><span className="icon-twitter" /></a>
-                     <a href="#" className="pl-3 pr-3"><span className="icon-instagram" /></a>
-                     <a href="#" className="pl-3 pr-3"><span className="icon-linkedin" /></a>
-                   </div>
-                 </div>
-               </div>
-             </div>
+              </div>
+              <div className="col-lg-4 mb-5 mb-lg-0">
+                <div className="row mb-5">
+                  <div className="col-md-12">
+                    <h3 className="footer-heading mb-4">Menu Rápido</h3>
+                  </div>
+                  <div className="col-md-6 col-lg-6">
+                    <ul className="list-unstyled">
+                      <li><a href="#">Inicio</a></li>
+                      <li><a href="#">Partidos</a></li>
+                      <li><a href="#">Noticias</a></li>
+                      <li><a href="#">Equipos</a></li>
+                    </ul>
+                  </div>
+                  <div className="col-md-6 col-lg-6">
+                    <ul className="list-unstyled">
+                      <li><a href="#">Acerca de</a></li>
+                      <li><a href="#">Politicas de Privacidad</a></li>
+                      <li><a href="#">Contactenos</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-12">
+                    <h3 className="footer-heading mb-4">Seguinos en Redes Sociales</h3>
+                    <div>
+                      <a href="#" className="pl-0 pr-3"><span className="icon-facebook" /></a>
+                      <a href="#" className="pl-3 pr-3"><span className="icon-twitter" /></a>
+                      <a href="#" className="pl-3 pr-3"><span className="icon-instagram" /></a>
+                      <a href="#" className="pl-3 pr-3"><span className="icon-linkedin" /></a>
+                    </div>
+                  </div>
+                </div>
 
-           </div>
-
-         </div>
-         <div className="row pt-5 mt-5 text-center">
-           <div className="col-md-12">
-             <p>
-               {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-               Copyright © All rights reserved | This template is made with <i className="icon-heart-o" aria-hidden="true" /> by <a href="https://www.unq.edu.ar" target="_blank">UNQ</a>
-               {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-             </p>
-           </div>
-         </div>
-       </div>
-     </footer>
+              </div>
+            </div>
+            <div className="row pt-5 mt-5 text-center">
+              <div className="col-md-12">
+                <p>
+                  {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
+                  Copyright © Todos los derechos reservados<i className="icon-heart-o" aria-hidden="true" /> by <a href="https://www.unq.edu.ar" target="_blank">UNQ</a>
+                  {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
    </div>
    <p/>
  </div>

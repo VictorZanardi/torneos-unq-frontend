@@ -73,17 +73,17 @@ class App extends React.Component {
                   </ul> */}
                 </li>
                 <li> {/*className="has-children"*/}
-                  <a href="news.html">Noticias</a>
+                  <a href="#">Noticias</a>
                   {/* <ul className="dropdown arrow-top">
                     <li><a href="#">Menu One</a></li>
                     <li><a href="#">Menu Two</a></li>
                     <li><a href="#">Menu Three</a></li>
                   </ul> */}
                 </li> 
-                <li><a href="matches.html">Partidos</a></li>
+                <li><a href="#">Partidos</a></li>
                 <li><a href="/TeamsList">Equipos</a></li>
-                <li><a href="about.html">Acerca de</a></li>
-                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Contacto</a></li>
                 <li><a href="/LoadTeam">Cargar Equipo</a></li>
               </ul>
             </div>
@@ -92,7 +92,7 @@ class App extends React.Component {
 
         <div className="site-blocks-vs site-section bg-light">
           <div className="container">
-            <div className="border mb-3 rounded d-block d-lg-flex align-items-center p-3 next-match">
+            {/* <div className="border mb-3 rounded d-block d-lg-flex align-items-center p-3 next-match">
               <div className="mr-auto order-md-1 w-60 text-center text-lg-left mb-3 mb-lg-0">
                 Proximo Partido
                 <div id="date-countdown" />
@@ -108,7 +108,7 @@ class App extends React.Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="bg-image overlay-success rounded mb-5" style={{backgroundImage: 'url("images/hero_bg_1.jpg")'}} data-stellar-background-ratio="0.5">
               <div className="row align-items-center">
                 <div className="col-md-12 col-lg-4 mb-4 mb-lg-0">
@@ -139,7 +139,7 @@ class App extends React.Component {
                       </div>
                       <div className="text order-1">
                         <h3 className="h5 mb-0 text-black">Boca</h3>
-                        <span className="text-uppercase small country text-black">Bolivia</span>
+                        <span className="text-uppercase small country text-black">Argentina</span>
                       </div>
                     </div>
                   </div>
@@ -169,12 +169,12 @@ class App extends React.Component {
                             <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
                               <div className="text-center text-lg-left">
                                 <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                  {/* <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
                                     <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
+                                  </div> */}
                                   <div className="text">
-                                    <h3 className="h5 mb-0 text-black">Packers</h3>
-                                    <span className="text-uppercase small country">Brazil</span>
+                                    <h3 className="h5 mb-0 text-black">Racing</h3>
+                                    <span className="text-uppercase small country">Argentina</span>
                                   </div>
                                 </div>
                               </div>
@@ -187,12 +187,12 @@ class App extends React.Component {
                             <div className="col-md-4 col-lg-4 text-center text-lg-right">
                               <div className>
                                 <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
+                                  {/* <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
                                     <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
+                                  </div> */}
                                   <div className="text order-1 w-100">
-                                    <h3 className="h5 mb-0 text-black">Steelers</h3>
-                                    <span className="text-uppercase small country">London</span>
+                                    <h3 className="h5 mb-0 text-black">Rosario Central</h3>
+                                    <span className="text-uppercase small country">Argentina</span>
                                   </div>
                                 </div>
                               </div>
@@ -203,12 +203,12 @@ class App extends React.Component {
                             <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
                               <div className="text-center text-lg-left">
                                 <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                  {/* <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
                                     <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
+                                  </div> */}
                                   <div className="text">
-                                    <h3 className="h5 mb-0 text-black">Patriots</h3>
-                                    <span className="text-uppercase small country">Brazil</span>
+                                    <h3 className="h5 mb-0 text-black">Palmeiras</h3>
+                                    <span className="text-uppercase small country">Brasil</span>
                                   </div>
                                 </div>
                               </div>
@@ -221,12 +221,12 @@ class App extends React.Component {
                             <div className="col-md-4 col-lg-4 text-center text-lg-right">
                               <div className>
                                 <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
+                                  {/* <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
                                     <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
+                                  </div> */}
                                   <div className="text order-1 w-100">
-                                    <h3 className="h5 mb-0 text-black">Cowboys</h3>
-                                    <span className="text-uppercase small country">London</span>
+                                    <h3 className="h5 mb-0 text-black">Barcelona</h3>
+                                    <span className="text-uppercase small country">España</span>
                                   </div>
                                 </div>
                               </div>
@@ -237,12 +237,12 @@ class App extends React.Component {
                             <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
                               <div className="text-center text-lg-left">
                                 <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                  {/* <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
                                     <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
+                                  </div> */}
                                   <div className="text">
-                                    <h3 className="h5 mb-0 text-black">Raiders</h3>
-                                    <span className="text-uppercase small country">Brazil</span>
+                                    <h3 className="h5 mb-0 text-black">Peñarol</h3>
+                                    <span className="text-uppercase small country">Uruguay</span>
                                   </div>
                                 </div>
                               </div>
@@ -255,228 +255,12 @@ class App extends React.Component {
                             <div className="col-md-4 col-lg-4 text-center text-lg-right">
                               <div className>
                                 <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
+                                  {/* <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
                                     <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
+                                  </div> */}
                                   <div className="text order-1 w-100">
-                                    <h3 className="h5 mb-0 text-black">Chiefs</h3>
-                                    <span className="text-uppercase small country">London</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          {/* END row */}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                      <div className="row align-items-center">
-                        <div className="col-md-12">
-                          <div className="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                            <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                              <div className="text-center text-lg-left">
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                    <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text">
-                                    <h3 className="h5 mb-0 text-black">Packers</h3>
-                                    <span className="text-uppercase small country">Brazil</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                              <div className="d-inline-block">
-                                <div className="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded"><span className="h5">3:2</span></div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center text-lg-right">
-                              <div className>
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                    <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text order-1 w-100">
-                                    <h3 className="h5 mb-0 text-black">Steelers</h3>
-                                    <span className="text-uppercase small country">London</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          {/* END row */}
-                          <div className="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                            <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                              <div className="text-center text-lg-left">
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                    <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text">
-                                    <h3 className="h5 mb-0 text-black">Patriots</h3>
-                                    <span className="text-uppercase small country">Brazil</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                              <div className="d-inline-block">
-                                <div className="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded"><span className="h5">3:2</span></div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center text-lg-right">
-                              <div className>
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                    <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text order-1 w-100">
-                                    <h3 className="h5 mb-0 text-black">Cowboys</h3>
-                                    <span className="text-uppercase small country">London</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          {/* END row */}
-                          <div className="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                            <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                              <div className="text-center text-lg-left">
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                    <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text">
-                                    <h3 className="h5 mb-0 text-black">Raiders</h3>
-                                    <span className="text-uppercase small country">Brazil</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                              <div className="d-inline-block">
-                                <div className="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded"><span className="h5">3:2</span></div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center text-lg-right">
-                              <div className>
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                    <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text order-1 w-100">
-                                    <h3 className="h5 mb-0 text-black">Chiefs</h3>
-                                    <span className="text-uppercase small country">London</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          {/* END row */}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                      <div className="row align-items-center">
-                        <div className="col-md-12">
-                          <div className="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                            <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                              <div className="text-center text-lg-left">
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                    <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text">
-                                    <h3 className="h5 mb-0 text-black">Packers</h3>
-                                    <span className="text-uppercase small country">Brazil</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                              <div className="d-inline-block">
-                                <div className="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded"><span className="h5">3:2</span></div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center text-lg-right">
-                              <div className>
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                    <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text order-1 w-100">
-                                    <h3 className="h5 mb-0 text-black">Steelers</h3>
-                                    <span className="text-uppercase small country">London</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          {/* END row */}
-                          <div className="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                            <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                              <div className="text-center text-lg-left">
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                    <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text">
-                                    <h3 className="h5 mb-0 text-black">Patriots</h3>
-                                    <span className="text-uppercase small country">Brazil</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                              <div className="d-inline-block">
-                                <div className="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded"><span className="h5">3:2</span></div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center text-lg-right">
-                              <div className>
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                    <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text order-1 w-100">
-                                    <h3 className="h5 mb-0 text-black">Cowboys</h3>
-                                    <span className="text-uppercase small country">London</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          {/* END row */}
-                          <div className="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                            <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                              <div className="text-center text-lg-left">
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                    <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text">
-                                    <h3 className="h5 mb-0 text-black">Raiders</h3>
-                                    <span className="text-uppercase small country">Brazil</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                              <div className="d-inline-block">
-                                <div className="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded"><span className="h5">3:2</span></div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-lg-4 text-center text-lg-right">
-                              <div className>
-                                <div className="d-block d-lg-flex align-items-center">
-                                  <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                    <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div>
-                                  <div className="text order-1 w-100">
-                                    <h3 className="h5 mb-0 text-black">Chiefs</h3>
-                                    <span className="text-uppercase small country">London</span>
+                                    <h3 className="h5 mb-0 text-black">Napoli</h3>
+                                    <span className="text-uppercase small country">Italia</span>
                                   </div>
                                 </div>
                               </div>
@@ -498,36 +282,35 @@ class App extends React.Component {
             <div className="row">
               <div className="col-lg-4">
                 <div className="mb-5">
-                  <h3 className="footer-heading mb-4">About Sportz</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque, consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima minus odio!</p>
+                  <h3 className="footer-heading mb-4">Torneos Internos</h3>
+                  <p>El deporte y la actividad física constituyen derechos que deben ser garantizados en todo el territorio nacional en tanto prácticas que promuevan la inclusión social, la integración y el desarrollo humano integral.</p>
                 </div>
 
               </div>
               <div className="col-lg-4 mb-5 mb-lg-0">
                 <div className="row mb-5">
                   <div className="col-md-12">
-                    <h3 className="footer-heading mb-4">Quick Menu</h3>
+                    <h3 className="footer-heading mb-4">Menu Rápido</h3>
                   </div>
                   <div className="col-md-6 col-lg-6">
                     <ul className="list-unstyled">
-                      <li><a href="#">Home</a></li>
-                      <li><a href="#">Matches</a></li>
-                      <li><a href="#">News</a></li>
-                      <li><a href="#">Team</a></li>
+                      <li><a href="#">Inicio</a></li>
+                      <li><a href="#">Partidos</a></li>
+                      <li><a href="#">Noticias</a></li>
+                      <li><a href="#">Equipos</a></li>
                     </ul>
                   </div>
                   <div className="col-md-6 col-lg-6">
                     <ul className="list-unstyled">
-                      <li><a href="#">About Us</a></li>
-                      <li><a href="#">Privacy Policy</a></li>
-                      <li><a href="#">Contact Us</a></li>
-                      <li><a href="#">Membership</a></li>
+                      <li><a href="#">Acerca de</a></li>
+                      <li><a href="#">Politicas de Privacidad</a></li>
+                      <li><a href="#">Contactenos</a></li>
                     </ul>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-12">
-                    <h3 className="footer-heading mb-4">Follow Us</h3>
+                    <h3 className="footer-heading mb-4">Seguinos en Redes Sociales</h3>
                     <div>
                       <a href="#" className="pl-0 pr-3"><span className="icon-facebook" /></a>
                       <a href="#" className="pl-3 pr-3"><span className="icon-twitter" /></a>
@@ -543,7 +326,7 @@ class App extends React.Component {
               <div className="col-md-12">
                 <p>
                   {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-                  Copyright © All rights reserved | This template is made with <i className="icon-heart-o" aria-hidden="true" /> by <a href="https://www.unq.edu.ar" target="_blank">Colorlib</a>
+                  Copyright © Todos los derechos reservados<i className="icon-heart-o" aria-hidden="true" /> by <a href="https://www.unq.edu.ar" target="_blank">UNQ</a>
                   {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
                 </p>
               </div>
