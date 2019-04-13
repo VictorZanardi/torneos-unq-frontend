@@ -7,7 +7,8 @@ import './css/magnific-popup.css'
 import './css/owl.theme.default.min.css'
 import './css/aos.css'
 import './css/style.css'
-import logo from './images/Logo.png'; // with import
+import logo from './images/Logo.png'; 
+import team1 from './images/team1.jpg'; 
 import Teams from './components/Teams.js';
 import LoadTeam from './components/LoadTeam';
 import { BrowserRouter, Route, Switch,Redirect} from 'react-router-dom';
@@ -16,14 +17,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-      <title>Sportz — Colorlib Sports Team Template</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <div className="site-wrap">
         <div className="site-mobile-menu">
           <div className="site-mobile-menu-header">
             <div className="site-mobile-menu-logo">
-              <a href="#"><img src={logo} alt="Image" /></a>
+              <a href="/"><img src={logo} alt="Image" /></a>
             </div>
             <div className="site-mobile-menu-close mt-3">
               <span className="icon-close2 js-menu-toggle" />
@@ -36,14 +36,14 @@ class App extends React.Component {
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-6 col-md-3">
-                  <a href="#" className="text-secondary px-2 pl-0"><span className="icon-facebook" /></a>
+                  <a href="https://www.facebook.com/UNQDeportes" className="text-secondary px-2 pl-0"><span className="icon-facebook" /></a>
                   <a href="#" className="text-secondary px-2"><span className="icon-instagram" /></a>
                   <a href="#" className="text-secondary px-2"><span className="icon-twitter" /></a>
                   <a href="#" className="text-secondary px-2"><span className="icon-linkedin" /></a>
                 </div>
                 <div className="col-6 col-md-9 text-right">
-                  <div className="d-inline-block"><a href="#" className="text-secondary p-2 d-flex align-items-center"><span className="icon-envelope mr-3" /> <span className="d-none d-md-block">youremail@domain.com</span></a></div>
-                  <div className="d-inline-block"><a href="#" className="text-secondary p-2 d-flex align-items-center"><span className="icon-phone mr-0 mr-md-3" /> <span className="d-none d-md-block">+1 232 3532 321</span></a></div>
+                  <div className="d-inline-block"><a href="#" className="text-secondary p-2 d-flex align-items-center"><span className="icon-envelope mr-3" /> <span className="d-none d-md-block">deportes@unq.edu.ar</span></a></div>
+                  <div className="d-inline-block"><a href="#" className="text-secondary p-2 d-flex align-items-center"><span className="icon-phone mr-0 mr-md-3" /> <span className="d-none d-md-block">+54 11 4365-7100 int. 5313 </span></a></div>
                 </div>
               </div>
             </div>
@@ -55,9 +55,9 @@ class App extends React.Component {
               </div>
               <div className="d-inline-block d-md-none ml-md-0 mr-auto py-3"><a href="#" className="site-menu-toggle js-menu-toggle text-white"><span className="icon-menu h3" /></a></div>
               <ul className="site-menu js-clone-nav d-none d-md-block">
-                <li className="has-children active">
-                  <a href="/">Home</a>
-                  <ul className="dropdown arrow-top">
+                <li> {/*className="has-children active"*/}
+                  <a href="/">Inicio</a>
+                  {/* <ul className="dropdown arrow-top">
                     <li><a href="#">Menu One</a></li>
                     <li><a href="#">Menu Two</a></li>
                     <li><a href="#">Menu Three</a></li>
@@ -69,20 +69,20 @@ class App extends React.Component {
                         <li><a href="#">Menu Three</a></li>
                       </ul>
                     </li>
-                  </ul>
+                  </ul> */}
                 </li>
-                <li className="has-children">
-                  <a href="news.html">News</a>
-                  <ul className="dropdown arrow-top">
+                <li> {/*className="has-children"*/}
+                  <a href="news.html">Noticias</a>
+                  {/* <ul className="dropdown arrow-top">
                     <li><a href="#">Menu One</a></li>
                     <li><a href="#">Menu Two</a></li>
                     <li><a href="#">Menu Three</a></li>
-                  </ul>
-                </li>
-                <li><a href="matches.html">Matches</a></li>
-                <li><a href="/TeamsList">Teams</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                  </ul> */}
+                </li> 
+                <li><a href="matches.html">Partidos</a></li>
+                <li><a href="/TeamsList">Equipos</a></li>
+                <li><a href="about.html">Acerca de</a></li>
+                <li><a href="contact.html">Contacto</a></li>
                 <li><a href="/LoadTeam">Cargar Equipo</a></li>
               </ul>
             </div>
@@ -93,17 +93,17 @@ class App extends React.Component {
           <div className="container">
             <div className="border mb-3 rounded d-block d-lg-flex align-items-center p-3 next-match">
               <div className="mr-auto order-md-1 w-60 text-center text-lg-left mb-3 mb-lg-0">
-                Next match
+                Proximo Partido
                 <div id="date-countdown" />
               </div>
               <div className="ml-auto pr-4 order-md-2">
                 <div className="h5 text-black text-uppercase text-center text-lg-left">
                   <div className="d-block d-md-inline-block mb-3 mb-lg-0">
-                    <img src="images/img_1_sq.jpg" alt="Image" className="mr-3 image" /><span className="d-block d-md-inline-block ml-0 ml-md-3 ml-lg-0">Sea Hawlks </span>
+                    <img src={team1} alt="Image" className="img-fluid image rounded-circle" /><span className="d-block d-md-inline-block ml-0 ml-md-3 ml-lg-0">Sea Hawlks </span>
                   </div>
                   <span className="text-muted mx-3 text-normal mb-3 mb-lg-0 d-block d-md-inline ">vs</span>
                   <div className="d-block d-md-inline-block">
-                    <img src="images/img_3_sq.jpg" alt="Image" className="mr-3 image" /><span className="d-block d-md-inline-block ml-0 ml-md-3 ml-lg-0">Patriots</span>
+                    <img src="images/img_3_sq.jpg" alt="Image" className="img-fluid image rounded-circle" /><span className="d-block d-md-inline-block ml-0 ml-md-3 ml-lg-0">Patriots</span>
                   </div>
                 </div>
               </div>
