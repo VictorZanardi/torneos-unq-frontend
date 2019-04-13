@@ -7,6 +7,7 @@ import '../css/owl.theme.default.min.css'
 import '../css/aos.css'
 import '../css/style.css'
 import axios, { post } from 'axios';
+import logo from './Logo.png'; 
 
 class LoadTeam extends React.Component {
 
@@ -55,7 +56,7 @@ class LoadTeam extends React.Component {
      <div className="site-mobile-menu">
        <div className="site-mobile-menu-header">
          <div className="site-mobile-menu-logo">
-           <a href="#"><img src="../images/Logo.png" alt="Image" /></a>
+           <a href="/"><img src={logo} alt="Image" /></a>
          </div>
          <div className="site-mobile-menu-close mt-3">
            <span className="icon-close2 js-menu-toggle" />
@@ -74,8 +75,8 @@ class LoadTeam extends React.Component {
                <a href="#" className="text-secondary px-2"><span className="icon-linkedin" /></a>
              </div>
              <div className="col-6 col-md-9 text-right">
-               <div className="d-inline-block"><a href="#" className="text-secondary p-2 d-flex align-items-center"><span className="icon-envelope mr-3" /> <span className="d-none d-md-block">youremail@domain.com</span></a></div>
-               <div className="d-inline-block"><a href="#" className="text-secondary p-2 d-flex align-items-center"><span className="icon-phone mr-0 mr-md-3" /> <span className="d-none d-md-block">+1 232 3532 321</span></a></div>
+             <div className="d-inline-block"><a href="#" className="text-secondary p-2 d-flex align-items-center"><span className="icon-envelope mr-3" /> <span className="d-none d-md-block">deportes@unq.edu.ar</span></a></div>
+             <div className="d-inline-block"><a href="#" className="text-secondary p-2 d-flex align-items-center"><span className="icon-phone mr-0 mr-md-3" /> <span className="d-none d-md-block">+54 11 4365-7100 int. 5313 </span></a></div>
              </div>
            </div>
          </div>
@@ -83,39 +84,39 @@ class LoadTeam extends React.Component {
        <nav className="site-navigation position-relative text-right bg-black text-md-right" role="navigation">
          <div className="container position-relative">
            <div className="site-logo">
-             <a href="index.html"><img src="images/logo.png" alt /></a>
+             <a href="/"><img src={logo} width="150" height="150" /></a>
            </div>
            <div className="d-inline-block d-md-none ml-md-0 mr-auto py-3"><a href="#" className="site-menu-toggle js-menu-toggle text-white"><span className="icon-menu h3" /></a></div>
            <ul className="site-menu js-clone-nav d-none d-md-block">
-             <li className="has-children">
-               <a href="/">Home</a>
-               <ul className="dropdown arrow-top">
-                 <li><a href="#">Menu One</a></li>
-                 <li><a href="#">Menu Two</a></li>
-                 <li><a href="#">Menu Three</a></li>
-                 <li className="has-children">
-                   <a href="#">Sub Menu</a>
-                   <ul className="dropdown">
-                     <li><a href="#">Menu One</a></li>
-                     <li><a href="#">Menu Two</a></li>
-                     <li><a href="#">Menu Three</a></li>
-                   </ul>
-                 </li>
-               </ul>
-             </li>
-             <li className="has-children">
-               <a href="news.html">News</a>
-               <ul className="dropdown arrow-top">
-                 <li><a href="#">Menu One</a></li>
-                 <li><a href="#">Menu Two</a></li>
-                 <li><a href="#">Menu Three</a></li>
-               </ul>
-             </li>
-             <li><a href="matches.html">Matches</a></li>
-             <li><a href="/Teams">Teams</a></li>
-             <li><a href="about.html">About</a></li>
-             <li><a href="contact.html">Contact</a></li>
-             <li className="active"><a href="/LoadTeam">Cargar Equipo</a></li>
+             <li> {/*className="has-children active"*/}
+                  <a href="/">Inicio</a>
+                  {/* <ul className="dropdown arrow-top">
+                    <li><a href="#">Menu One</a></li>
+                    <li><a href="#">Menu Two</a></li>
+                    <li><a href="#">Menu Three</a></li>
+                    <li className="has-children">
+                      <a href="#">Sub Menu</a>
+                      <ul className="dropdown">
+                        <li><a href="#">Menu One</a></li>
+                        <li><a href="#">Menu Two</a></li>
+                        <li><a href="#">Menu Three</a></li>
+                      </ul>
+                    </li>
+                  </ul> */}
+                </li>
+                <li> {/*className="has-children"*/}
+                  <a href="news.html">Noticias</a>
+                  {/* <ul className="dropdown arrow-top">
+                    <li><a href="#">Menu One</a></li>
+                    <li><a href="#">Menu Two</a></li>
+                    <li><a href="#">Menu Three</a></li>
+                  </ul> */}
+                </li> 
+                <li><a href="matches.html">Partidos</a></li>
+                <li><a href="/TeamsList">Equipos</a></li>
+                <li><a href="about.html">Acerca de</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="/LoadTeam">Cargar Equipo</a></li>
            </ul>
          </div>
        </nav>

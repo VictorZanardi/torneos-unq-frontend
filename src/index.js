@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import TeamsList from './components/TeamsList'
 import LoadTeam from './components/LoadTeam';
-import Teams from './components/Teams';
+import TeamDetail from './components/TeamDetail';
 
 const routing = (
   <Router>
@@ -14,7 +14,7 @@ const routing = (
       <Route exact path="/" component={App} />
       <Route path="/TeamsList" component={TeamsList} />
       <Route path="/LoadTeam" component={LoadTeam} />
-      <Route path="/teamsBy/:id/:name" component={Teams} />
+      <Route path="/teamsBy/:id/:name" component={TeamDetail} />
     </div>
   </Router>
 )
