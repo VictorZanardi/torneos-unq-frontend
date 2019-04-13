@@ -8,7 +8,6 @@ import './css/owl.theme.default.min.css'
 import './css/aos.css'
 import './css/style.css'
 import logo from './images/Logo.png'; // with import
-import Teams from './components/Teams.js';
 import LoadTeam from './components/LoadTeam';
 import { BrowserRouter, Route, Switch,Redirect} from 'react-router-dom';
 
@@ -56,7 +55,7 @@ class App extends React.Component {
               <div className="d-inline-block d-md-none ml-md-0 mr-auto py-3"><a href="#" className="site-menu-toggle js-menu-toggle text-white"><span className="icon-menu h3" /></a></div>
               <ul className="site-menu js-clone-nav d-none d-md-block">
                 <li className="has-children active">
-                  <a href="/">Home</a>
+                  <a href="/">Inicio</a>
                   <ul className="dropdown arrow-top">
                     <li><a href="#">Menu One</a></li>
                     <li><a href="#">Menu Two</a></li>
@@ -71,18 +70,9 @@ class App extends React.Component {
                     </li>
                   </ul>
                 </li>
-                <li className="has-children">
-                  <a href="news.html">News</a>
-                  <ul className="dropdown arrow-top">
-                    <li><a href="#">Menu One</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                  </ul>
-                </li>
-                <li><a href="matches.html">Matches</a></li>
-                <li><a href="/TeamsList">Teams</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                
+                
+                <li><a href="/TeamsList">Equipos</a></li>
                 <li><a href="/LoadTeam">Cargar Equipo</a></li>
               </ul>
             </div>
