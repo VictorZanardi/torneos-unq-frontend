@@ -11,6 +11,7 @@ import logo from './images/Logo.png';
 import team1 from './images/team1.jpg';
 import LoadTeam from './components/LoadTeam';
 import quilmes from './images/quilmes.svg'
+import TablePositions from './components/TablePositions';
 import boca from './images/boca.png'
 import { BrowserRouter, Route, Switch,Redirect} from 'react-router-dom';
 
@@ -146,6 +147,9 @@ class App extends React.Component {
                 </div>
               </div>
             </div>
+
+            <TablePositions />
+
             <div className="row">
               <div className="col-md-12">
                 <h2 className="h6 text-uppercase text-black font-weight-bold mb-3">Fechas anteriores</h2>
