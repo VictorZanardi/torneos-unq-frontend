@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './TablePositions.css';
 
 class TablePositions extends React.Component {
 
@@ -22,24 +23,29 @@ class TablePositions extends React.Component {
     	const {positions} = this.state;
 
     	return (
-    		<div>
+    		<table class="table">
 
-    		<table class="position">
-
+    		<thead class="thead-dark">
               <tr>
-                <th scope="row">Pts</th>
-                <th>Pj</th>
-                <th>Pg</th>
-                <th>Pe</th>
-                <th>Pp</th>
-                <th>Gf</th>
-                <th>Ge</th>
-                <th>Dif</th>
+              	<th scope="col">#</th>
+              	<th scope="col">Equipo</th>
+                <th scope="col">Pts</th>
+                <th scope="col">Pj</th>
+                <th scope="col">Pg</th>
+                <th scope="col">Pe</th>
+                <th scope="col">Pp</th>
+                <th scope="col">Gf</th>
+                <th scope="col">Ge</th>
+                <th scope="col">Dif</th>
               </tr>
+            </thead>
 
-            {positions.map((position) =>
+            <tbody>
+            {positions.map((position,index) =>
 
             	<tr>
+            		<th scope="row">{index+1}</th>
+            		<td>{position.team.name}</td>
             		<td>{position.points}</td>
                 	<td>{position.played}</td>
                 	<td>{position.won}</td>
@@ -51,10 +57,8 @@ class TablePositions extends React.Component {
               </tr>
 
             )}
-
+            </tbody>
             </table>
-
-    		</div>
     	);
     }
 

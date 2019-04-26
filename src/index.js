@@ -7,7 +7,7 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import TeamsList from './components/TeamsList'
 import LoadTeam from './components/LoadTeam';
 import TeamDetail from './components/TeamDetail';
-import FileUploader from './components/FileUploader';
+//import FileUploader from './components/FileUploader';
 
 const routing = (
   <Router>

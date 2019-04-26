@@ -147,7 +147,7 @@ class App extends React.Component {
                 </div>
               </div>
             </div>
-
+            <h2 className="h6 text-uppercase text-black font-weight-bold mb-3">Tabla de Posiciones</h2>
             <TablePositions />
 
             <div className="row">
