@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './TablePositions.css';
 
 class TablePositions extends React.Component {
 
