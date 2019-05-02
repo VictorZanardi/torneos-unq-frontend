@@ -25,7 +25,6 @@ class TeamDetail extends Component {
             id:this.props.match.params.id,
             name: this.props.match.params.name,
             players: [],
-            idPlayer:null
         };
     }
 
@@ -50,23 +49,20 @@ class TeamDetail extends Component {
       
       uploadFileToServer(data,idPlayer){
         //returns Promise object
-        //const obj = { image: data, id: idPlayer };
-        console.log(idPlayer);
         return this.getRestClient().post('/uploadPhoto/'+idPlayer,data);
       }
 
-      handleUploadFile = (event) => {
+      handleUploadFile = (event,idPlayer) => {
         const data = new FormData();
         //using File API to get chosen file
         let file = event.target.files[0];
         console.log("Subiendo archivo", event.target.files[0]);
         data.append('file', event.target.files[0]);
-        data.append('name', 'my_file');
-        data.append('description', 'this file is uploaded by young padawan');
         let self = this;
         //calling async Promise and handling response or error situation
-        this.uploadFileToServer(data,this.state.idPlayer).then((response) => {
+        this.uploadFileToServer(data,idPlayer).then((response) => {
             console.log("File " + file.name + " is uploaded");
+        window.location.reload();   
         }).catch(function (error) {
             console.log(error);
             if (error.response) {
@@ -79,10 +75,11 @@ class TeamDetail extends Component {
         });
       };
 
+     
+      
   render() {
-
+    
     const {players} = this.state;
-
     return (
       <div>
       <Header/>
@@ -99,20 +96,18 @@ class TeamDetail extends Component {
             {players.map((player) =>
               <div className="mb-4 mb-lg-0 col-6 col-md-4 col-lg-2 text-center">
                 <div className="player mb-5">
-                  <span className="team-number">10</span>
-                  <div>
-                    {this.state.idPlayer = player.id}
-                    <input type="file" onChange={this.handleUploadFile} />
-                  </div>
-                  {/* <a ><img src={player.photo} alt="Image" className="img-fluid image rounded-circle" /></a> */}
-                  <img src={player.photo}></img>
+                  {/* <span className="team-number">10</span> */}
+                  <label className="btn btn-primary">
+                    <span>Cargar Foto</span>
+                    <input style={{display:"none"}} id="file" type="file" onChange={(evt) => this.handleUploadFile(evt, player.id)}></input>
+                  </label>
+                  <a ><img src={'data:image/jpeg;base64,' + player.photo} alt="Image" className="img-fluid image rounded-circle" /></a>
                   <h2>{player.name}</h2>
                   <h2>{player.lastName}</h2>
                   <h2>{'DNI: '+ player.dni}</h2>
                 </div>
                 </div>
             )}
-
          </div>
        </div>
      </div>
