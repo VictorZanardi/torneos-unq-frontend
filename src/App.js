@@ -7,8 +7,9 @@ import './css/magnific-popup.css';
 import './css/owl.theme.default.min.css';
 import './css/aos.css';
 import './css/style.css';
-import quilmes from './images/quilmes.svg'
+import quilmes from './images/quilmes.svg';
 import TablePositions from './components/TablePositions';
+import Matches from './components/Matches';
 import boca from './images/boca.png'
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -77,8 +78,8 @@ class App extends React.Component {
             </div>
             <h2 className="h6 text-uppercase text-black font-weight-bold mb-3">Tabla de Posiciones</h2>
             <TablePositions />
-
-            <div className="row">
+            <Matches />
+            {/*<div className="row">
               <div className="col-md-12">
                 <h2 className="h6 text-uppercase text-black font-weight-bold mb-3">Fechas anteriores</h2>
                 <div className="site-block-tab">
@@ -101,9 +102,9 @@ class App extends React.Component {
                             <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
                               <div className="text-center text-lg-left">
                                 <div className="d-block d-lg-flex align-items-center">
-                                  {/* <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                   <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
                                     <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div> */}
+                                  </div> 
                                   <div className="text">
                                     <h3 className="h5 mb-0 text-black">Racing</h3>
                                     <span className="text-uppercase small country">Argentina</span>
@@ -119,9 +120,9 @@ class App extends React.Component {
                             <div className="col-md-4 col-lg-4 text-center text-lg-right">
                               <div className>
                                 <div className="d-block d-lg-flex align-items-center">
-                                  {/* <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
+                                  <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
                                     <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div> */}
+                                  </div> 
                                   <div className="text order-1 w-100">
                                     <h3 className="h5 mb-0 text-black">Rosario Central</h3>
                                     <span className="text-uppercase small country">Argentina</span>
@@ -130,14 +131,15 @@ class App extends React.Component {
                               </div>
                             </div>
                           </div>
-                          {/* END row */}
+                          
+
                           <div className="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
                             <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
                               <div className="text-center text-lg-left">
                                 <div className="d-block d-lg-flex align-items-center">
-                                  {/* <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                   <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
                                     <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div> */}
+                                  </div> 
                                   <div className="text">
                                     <h3 className="h5 mb-0 text-black">Palmeiras</h3>
                                     <span className="text-uppercase small country">Brasil</span>
@@ -153,9 +155,9 @@ class App extends React.Component {
                             <div className="col-md-4 col-lg-4 text-center text-lg-right">
                               <div className>
                                 <div className="d-block d-lg-flex align-items-center">
-                                  {/* <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
+                                   <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
                                     <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div> */}
+                                  </div> 
                                   <div className="text order-1 w-100">
                                     <h3 className="h5 mb-0 text-black">Barcelona</h3>
                                     <span className="text-uppercase small country">España</span>
@@ -164,14 +166,15 @@ class App extends React.Component {
                               </div>
                             </div>
                           </div>
-                          {/* END row */}
+                          
+
                           <div className="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
                             <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
                               <div className="text-center text-lg-left">
                                 <div className="d-block d-lg-flex align-items-center">
-                                  {/* <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                               <div className="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
                                     <img src="images/img_1_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div> */}
+                                  </div> 
                                   <div className="text">
                                     <h3 className="h5 mb-0 text-black">Peñarol</h3>
                                     <span className="text-uppercase small country">Uruguay</span>
@@ -187,9 +190,9 @@ class App extends React.Component {
                             <div className="col-md-4 col-lg-4 text-center text-lg-right">
                               <div className>
                                 <div className="d-block d-lg-flex align-items-center">
-                                  {/* <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
+                                  <div className="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
                                     <img src="images/img_4_sq.jpg" alt="Image" className="img-fluid" />
-                                  </div> */}
+                                  </div> 
                                   <div className="text order-1 w-100">
                                     <h3 className="h5 mb-0 text-black">Napoli</h3>
                                     <span className="text-uppercase small country">Italia</span>
@@ -198,14 +201,14 @@ class App extends React.Component {
                               </div>
                             </div>
                           </div>
-                          {/* END row */}
+                        
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+          </div>*/}
           </div>
         </div>
       <Footer/>
