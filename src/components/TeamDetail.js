@@ -9,6 +9,8 @@ import '../css/style.css';
 import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
+import EditPlayer from './EditPlayer';
+import './EditPlayer.css';
 
 var sectionStyle = {
     width: "100%",
@@ -97,14 +99,15 @@ class TeamDetail extends Component {
               <div className="mb-4 mb-lg-0 col-6 col-md-4 col-lg-2 text-center">
                 <div className="player mb-5">
                   {/* <span className="team-number">10</span> */}
-                  <label className="btn btn-primary">
-                    <span>Cargar Foto</span>
-                    <input style={{display:"none"}} id="file" type="file" onChange={(evt) => this.handleUploadFile(evt, player.id)}></input>
-                  </label>
                   <a ><img src={'data:image/jpeg;base64,' + player.photo} alt="Image" className="img-fluid image rounded-circle" /></a>
                   <h2>{player.name}</h2>
                   <h2>{player.lastName}</h2>
                   <h2>{'DNI: '+ player.dni}</h2>
+                  <label className="btn btn-primary">
+                    <span>Cargar Foto</span>
+                    <input style={{display:"none"}} id="file" type="file" onChange={(evt) => this.handleUploadFile(evt, player.id)}></input>
+                  </label>
+                  <EditPlayer id={player.id}/>
                 </div>
                 </div>
             )}
