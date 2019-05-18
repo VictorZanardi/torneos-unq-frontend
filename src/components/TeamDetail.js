@@ -10,7 +10,13 @@ import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
 import EditPlayer from './EditPlayer';
-import './EditPlayer.css';
+import CreatePlayer from './CreatePlayer';
+import CardColumns from 'react-bootstrap/CardColumns';
+import Card from 'react-bootstrap/Card';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import { TiDelete } from "react-icons/ti";
 
 var sectionStyle = {
     width: "100%",
@@ -27,6 +33,7 @@ class TeamDetail extends Component {
             id:this.props.match.params.id,
             name: this.props.match.params.name,
             players: [],
+            smShow: false
         };
     }
 
@@ -77,11 +84,20 @@ class TeamDetail extends Component {
         });
       };
 
+      delete(id){
+        axios.delete('http://localhost:8080/api/deletePlayer/'+id)
+            .then(function (response) {
+                alert("Subasta Eliminada!!!");
+                window.location.reload();
+            });
+      }
      
       
   render() {
     
     const {players} = this.state;
+    let smClose = () => this.setState({ smShow: false });
+
     return (
       <div>
       <Header/>
@@ -90,31 +106,52 @@ class TeamDetail extends Component {
        <div className="container">
          <div className="row">
            <div className="col-md-12 text-center mb-5">
-             <h2 className="text-black">{this.state.name}</h2>
+             <h1 className="text-black">{this.state.name}</h1>
            </div>
          </div>
         
-         <div className="row">
+         <CardColumns>
             {players.map((player) =>
-              <div className="mb-4 mb-lg-0 col-6 col-md-4 col-lg-2 text-center">
-                <div className="player mb-5">
-                  {/* <span className="team-number">10</span> */}
-                  <a ><img src={'data:image/jpeg;base64,' + player.photo} alt="Image" className="img-fluid image rounded-circle" /></a>
-                  <h2>{player.name}</h2>
-                  <h2>{player.lastName}</h2>
-                  <h2>{'DNI: '+ player.dni}</h2>
-                  <label className="btn btn-primary">
-                    <span>Cargar Foto</span>
-                    <input style={{display:"none"}} id="file" type="file" onChange={(evt) => this.handleUploadFile(evt, player.id)}></input>
-                  </label>
-                  <EditPlayer id={player.id}/>
-                </div>
-                </div>
+
+                  <Card>
+                    <blockquote className="blockquote mb-0 card-body">
+                    <Card.Img variant="top" src={'data:image/jpeg;base64,' + player.photo} />
+                    <Card.Body>
+                      <Card.Title>{player.name}</Card.Title>
+                      <Card.Title>{player.lastName}</Card.Title>
+                      <Card.Title>{'DNI: '+ player.dni}</Card.Title>
+                      <label className="btn btn-warning">
+                        <span>Cargar Foto</span>
+                        <input style={{display:"none"}} id="file" type="file" onChange={(evt) => this.handleUploadFile(evt, player.id)}></input>
+                      </label>
+                      <br/>
+                      <EditPlayer id={player.id}/>
+
+                        <Button variant="danger" onClick={() => this.setState({ smShow: true })}>
+                          <TiDelete/>
+                        </Button>
+
+                        <Modal size="sm" show={this.state.smShow} onHide={smClose} aria-labelledby="example-modal-sizes-title-sm">
+                          <Modal.Body>
+                            ¿DESEA BORRAR EL JUGADOR?
+                          </Modal.Body>
+                          <Modal.Footer>
+                          <Button variant="secondary" onClick={smClose}> NO </Button>
+                            <Button variant="primary" onClick={this.delete.bind(this, player.id)}>SI</Button>
+                          </Modal.Footer>
+                        </Modal>
+
+                    </Card.Body>
+                    </blockquote>
+                  </Card>
+                
             )}
-         </div>
+            </CardColumns>
+         <Card>
+         <CreatePlayer idTeam={this.state.id}/>
+         </Card>
        </div>
      </div>
-
      <Footer/>
    </div>
 

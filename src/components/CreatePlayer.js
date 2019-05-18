@@ -1,28 +1,35 @@
 import * as React from 'react';
 import axios from "axios/index";
-import { TiEdit } from "react-icons/ti";
+import { IoIosAddCircle } from "react-icons/io";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './CreatePlayer.css';
 
-class EditPlayer extends React.Component {
+class CreatePlayer extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            player: {},
-            id: this.props.id,
+            player: {
+                name: undefined,
+                lastName: undefined,
+                dni: undefined,
+                birthdate: undefined
+            },
+            idTeam: this.props.idTeam,
             show: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleShow = this.handleShow.bind(this);
-        this.handleClose = this.handleClose.bind(this);  
+        this.handleClose = this.handleClose.bind(this);   
     }
 
-    componentDidMount() {
-        fetch('http://localhost:8080/api/playerById/'+this.state.id)
-            .then(response => response.json())
-            .then(data => this.setState({player: data}));
+    handleSubmit(event){
+        event.preventDefault();
+        axios.post('http://localhost:8080/api/playerCreate/'+this.state.idTeam,this.state.player)
+        .then(function (response) {
+            window.location.reload();
+        });
     }
 
     updateState = (name,event) => {
@@ -30,14 +37,6 @@ class EditPlayer extends React.Component {
         newPlayer[name] = event.target.value;
         this.setState({player:newPlayer});
     };
-
-    handleSubmit(event){
-        event.preventDefault();
-        axios.post('http://localhost:8080/api/playerUpdate/'+this.state.id,this.state.player)
-        .then(function (response) {
-            window.location.reload();
-        });
-    }
 
     handleClose() {
         this.setState({ show: false });
@@ -51,17 +50,16 @@ class EditPlayer extends React.Component {
 
         return (
             <>
-            <Button variant="info" onClick={this.handleShow}>
-                <TiEdit />
+            <Button variant="success" onClick={this.handleShow}>
+                <IoIosAddCircle />
             </Button>
 
-            <Modal show={this.state.show} onHide={this.handleClose} aria-labelledby="example-modal-sizes-title-sm">
+            <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Editar A {this.state.player.lastName}</Modal.Title>
+                    <Modal.Title>Crear Jugador</Modal.Title>
                 </Modal.Header>
             <Modal.Body>  
-                <form>
-
+                <form> 
                     <label htmlFor="name">Nombre</label>
                     <input id="name" name="name" type="text" value={this.state.player.name} onChange={this.updateState.bind(this,'name')}/>
                     <br/>
@@ -92,4 +90,4 @@ class EditPlayer extends React.Component {
         );
     }
 }
-export default EditPlayer;
+export default CreatePlayer;
