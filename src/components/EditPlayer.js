@@ -20,7 +20,7 @@ class EditPlayer extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/api/playerById/'+this.state.id)
+        fetch('api/playerById/'+this.state.id)
             .then(response => response.json())
             .then(data => this.setState({player: data}));
     }
@@ -33,7 +33,7 @@ class EditPlayer extends React.Component {
 
     handleSubmit(event){
         event.preventDefault();
-        axios.post('http://localhost:8080/api/playerUpdate/'+this.state.id,this.state.player)
+        axios.post('api/playerUpdate/'+this.state.id,this.state.player)
         .then(function (response) {
             window.location.reload();
         });

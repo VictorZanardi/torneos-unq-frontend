@@ -7,6 +7,7 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import TeamsList from './components/TeamsList'
 import LoadTeam from './components/LoadTeam';
 import TeamDetail from './components/TeamDetail';
+import Registration from './components/Registration';
 //import FileUploader from './components/FileUploader';
 
 const routing = (
@@ -16,6 +17,7 @@ const routing = (
       <Route path="/TeamsList" component={TeamsList} />
       <Route path="/LoadTeam" component={LoadTeam} />
       <Route path="/teamsBy/:id/:name" component={TeamDetail} />
+      <Route path="/registration" component={Registration} />
     </div>
   </Router>
 )

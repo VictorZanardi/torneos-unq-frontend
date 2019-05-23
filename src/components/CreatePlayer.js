@@ -26,7 +26,7 @@ class CreatePlayer extends React.Component {
 
     handleSubmit(event){
         event.preventDefault();
-        axios.post('http://localhost:8080/api/playerCreate/'+this.state.idTeam,this.state.player)
+        axios.post('api/playerCreate/'+this.state.idTeam,this.state.player)
         .then(function (response) {
             window.location.reload();
         });
