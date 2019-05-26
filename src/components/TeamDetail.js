@@ -84,7 +84,7 @@ class TeamDetail extends Component {
       };
 
       delete(id){
-        axios.delete('http://localhost:8080/api/deletePlayer/'+id)
+        axios.delete('api/deletePlayer/'+id)
             .then(function (response) {
                 alert("Subasta Eliminada!!!");
                 window.location.reload();

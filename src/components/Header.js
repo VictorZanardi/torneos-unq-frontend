@@ -73,6 +73,7 @@ class Header extends React.Component {
               <li><a href="/Championship">Torneos</a></li>
               <li><a href="#">Contacto</a></li>
               <li><a href="/LoadTeam">Cargar Equipo</a></li>
+              <li><a href="/registration">Registrarse</a></li>
             </ul>
           </div>
         </nav>

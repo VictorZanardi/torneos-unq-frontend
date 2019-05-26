@@ -13,12 +13,12 @@ class Matches extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/api/matches')
+        fetch('api/matches')
             .then(response => response.json())
             .then(data => 
                 this.setState({matches: data}));
 
-        fetch('http://localhost:8080/api/fixture')
+        fetch('api/fixture')
             .then(response => response.json())
             .then(data => 
                 this.setState({matchWeek: data}));
