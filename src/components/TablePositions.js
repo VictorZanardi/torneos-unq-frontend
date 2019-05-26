@@ -20,7 +20,26 @@ class TablePositions extends React.Component {
 
     render() {
 
-    	const {positions} = this.state;
+      const {positions} = this.state;
+      var tBody = [];
+      
+      if(positions.length > 0 ){
+          tBody.push(
+            positions.map((position,index) =>
+            <tr>
+              <th scope="row">{index+1}</th>
+              <td>{position.team.name}</td>
+              <td>{position.points}</td>
+                <td>{position.played}</td>
+                <td>{position.won}</td>
+                <td>{position.drawn}</td>
+                <td>{position.lost}</td>
+                <td>{position.goalsF}</td>
+                <td>{position.goalsA}</td>
+                <td>{position.goalsD}</td>
+            </tr>
+          ))
+      }
 
     	return (
     		<table class="table">
@@ -41,22 +60,8 @@ class TablePositions extends React.Component {
             </thead>
 
             <tbody>
-            {positions.map((position,index) =>
+            {tBody} 
 
-            	<tr>
-            		<th scope="row">{index+1}</th>
-            		<td>{position.team.name}</td>
-            		<td>{position.points}</td>
-                	<td>{position.played}</td>
-                	<td>{position.won}</td>
-                	<td>{position.drawn}</td>
-                	<td>{position.lost}</td>
-                	<td>{position.goalsF}</td>
-                	<td>{position.goalsA}</td>
-                	<td>{position.goalsD}</td>
-              </tr>
-
-            )}
             </tbody>
             </table>
     	);
