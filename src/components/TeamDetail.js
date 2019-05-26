@@ -15,7 +15,6 @@ import CardColumns from 'react-bootstrap/CardColumns';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { TiDelete } from "react-icons/ti";
 
 var sectionStyle = {

@@ -7,7 +7,8 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import TeamsList from './components/TeamsList'
 import LoadTeam from './components/LoadTeam';
 import TeamDetail from './components/TeamDetail';
-//import FileUploader from './components/FileUploader';
+import Championship from './components/Championship';
+import NewChampionship from './components/NewChampionship';
 
 const routing = (
   <Router>
@@ -16,6 +17,8 @@ const routing = (
       <Route path="/TeamsList" component={TeamsList} />
       <Route path="/LoadTeam" component={LoadTeam} />
       <Route path="/teamsBy/:id/:name" component={TeamDetail} />
+      <Route path="/Championship" component={Championship} />
+      <Route path="/NewChampionship" component={NewChampionship} />
     </div>
   </Router>
 )
