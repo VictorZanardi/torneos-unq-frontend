@@ -38,9 +38,10 @@ class TeamDetail extends Component {
     }
 
       componentDidMount() {
-        fetch('http://localhost:8080/api/TeamBy/'+this.state.id)
+        fetch('api/TeamBy/'+this.state.id)
             .then(response => response.json())
-            .then(data => this.setState({players: data}));
+            .then(data => this.setState({players: data}))
+            .catch(error => {console.log(error.response)});
       }
 
       getRestClient() {
@@ -58,7 +59,7 @@ class TeamDetail extends Component {
       
       uploadFileToServer(data,idPlayer){
         //returns Promise object
-        return this.getRestClient().post('/uploadPhoto/'+idPlayer,data);
+        return this.getRestClient().post('api/uploadPhoto/'+idPlayer,data);
       }
 
       handleUploadFile = (event,idPlayer) => {

@@ -16,12 +16,14 @@ class Matches extends React.Component {
         fetch('api/matches')
             .then(response => response.json())
             .then(data => 
-                this.setState({matches: data}));
+                this.setState({matches: data}))
+                .catch(error => {console.log(error.response)});
 
         fetch('api/fixture')
             .then(response => response.json())
             .then(data => 
-                this.setState({matchWeek: data}));
+                this.setState({matchWeek: data}))
+                .catch(error => {console.log(error.response)});
     }
 
     render() {
