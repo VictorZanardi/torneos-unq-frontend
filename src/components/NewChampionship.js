@@ -137,7 +137,7 @@ handleSubmit(event){
             </ListItem>
             <Divider />
             <ListItemText >
-            <label htmlFor="startDate">Fecha Inicio</label><br/>
+            <label htmlFor="startDate">Fecha Inicio</label>
             <input
                 id="startDate"
                 type="date"
@@ -147,7 +147,7 @@ handleSubmit(event){
             </ListItemText>
             <Divider />
             <ListItemText>
-            <label htmlFor="finishDate">Fecha Finalizacion</label><br/>
+            <label htmlFor="finishDate">Fecha Finalizacion</label>
             <input
                 id="finishDate"
                 type="date"

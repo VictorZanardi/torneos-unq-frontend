@@ -23,7 +23,8 @@ class TeamsList extends React.Component {
     componentDidMount() {
         fetch('api/teams')
             .then(response => response.json())
-            .then(data => this.setState({teams: data}));
+            .then(data => this.setState({teams: data}))
+            .catch(error => {console.log(error.response)});
     }
 
     render() {

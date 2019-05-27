@@ -22,7 +22,8 @@ class EditPlayer extends React.Component {
     componentDidMount() {
         fetch('api/playerById/'+this.state.id)
             .then(response => response.json())
-            .then(data => this.setState({player: data}));
+            .then(data => this.setState({player: data}))
+            .catch(error => {console.log(error.response)});
     }
 
     updateState = (name,event) => {
@@ -36,7 +37,8 @@ class EditPlayer extends React.Component {
         axios.post('api/playerUpdate/'+this.state.id,this.state.player)
         .then(function (response) {
             window.location.reload();
-        });
+        })
+        .catch(error => {console.log(error.response)});
     }
 
     handleClose() {

@@ -10,7 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
-import EditIcon from '@material-ui/core/Icon';
+import Icon from '@material-ui/core/Icon';
 
 class Championship extends React.Component {
 
@@ -75,6 +75,7 @@ render() {
             <StyledTableCell align="center">Descripcion</StyledTableCell>
             <StyledTableCell align="center">Fecha de Inicio</StyledTableCell>
             <StyledTableCell align="center">Fecha de Fin</StyledTableCell>
+            <StyledTableCell align="center"></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -84,11 +85,11 @@ render() {
                 {championship.name}
               </StyledTableCell>
               <StyledTableCell align="center">{championship.description}</StyledTableCell>
-              {/* <StyledTableCell align="right">{championship.startDate}</StyledTableCell> */}
+              <StyledTableCell align="right">{championship.startDate}</StyledTableCell>
               {/* <StyledTableCell align="right">{championship.finishDate}</StyledTableCell> */}
               <StyledTableCell align="center">
                 <Fab color="primary" aria-label="Edit" >
-                <EditIcon></EditIcon>
+                <Icon></Icon>
               </Fab>
               </StyledTableCell>
             </StyledTableRow>

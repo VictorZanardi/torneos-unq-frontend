@@ -14,7 +14,8 @@ class TablePositions extends React.Component {
     componentDidMount() {
         fetch('api/tablePositions')
             .then(response => response.json())
-            .then(data => this.setState({positions: data}));
+            .then(data => this.setState({positions: data}))
+            .catch(error => {console.log(error.response)});
     }
 
     render() {

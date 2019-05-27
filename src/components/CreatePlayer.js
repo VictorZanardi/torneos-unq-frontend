@@ -29,7 +29,8 @@ class CreatePlayer extends React.Component {
         axios.post('api/playerCreate/'+this.state.idTeam,this.state.player)
         .then(function (response) {
             window.location.reload();
-        });
+        })
+        .catch(error => {console.log(error.response)});
     }
 
     updateState = (name,event) => {
