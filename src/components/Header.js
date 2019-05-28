@@ -6,10 +6,20 @@ class Header extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
-    
-    this.logout = this.logout.bind(this);  
-}
+      this.state = {
+        isLogged: true
+      };
+
+      this.logout = this.logout.bind(this);  
+  }
+
+  componentDidMount() {
+    fetch('api/profile')
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .then(data => this.setState({isLogged: true}))
+        .catch(error => {console.log(error.response)});
+  }
 
   logout() {
     axios.post('api/logout')
@@ -26,6 +36,34 @@ class Header extends React.Component {
   }
 
   render() {
+
+    const {isLogged} = this.state;
+
+    var li = [];
+
+    if(isLogged){
+      li.push(
+        <ul className="site-menu js-clone-nav d-none d-md-block">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="#">Noticias</a></li> 
+          <li><a href="#">Partidos</a></li>
+          <li><a href="/TeamsList">Equipos</a></li>
+          <li><a href="/LoadTeam">Cargar Equipo</a></li>
+          <li><a href="/" onClick={this.logout}>Logout</a></li>
+        </ul>
+      );
+    } else {
+        li.push(
+          <ul className="site-menu js-clone-nav d-none d-md-block">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="#">Noticias</a></li> 
+            <li><a href="#">Partidos</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/registration">Registrarse</a></li>
+          </ul>
+        );
+    }
+
     return (
       <div>
       <meta charSet="utf-8" />
@@ -66,39 +104,7 @@ class Header extends React.Component {
               <a href="/"><img src={logo} width="150" height="150" /></a>
             </div>
             <div className="d-inline-block d-md-none ml-md-0 mr-auto py-3"><a href="#" className="site-menu-toggle js-menu-toggle text-white"><span className="icon-menu h3" /></a></div>
-            <ul className="site-menu js-clone-nav d-none d-md-block">
-              <li> {/*className="has-children active"*/}
-                <a href="/">Inicio</a>
-                {/* <ul className="dropdown arrow-top">
-                  <li><a href="#">Menu One</a></li>
-                  <li><a href="#">Menu Two</a></li>
-                  <li><a href="#">Menu Three</a></li>
-                  <li className="has-children">
-                    <a href="#">Sub Menu</a>
-                    <ul className="dropdown">
-                      <li><a href="#">Menu One</a></li>
-                      <li><a href="#">Menu Two</a></li>
-                      <li><a href="#">Menu Three</a></li>
-                    </ul>
-                  </li>
-                </ul> */}
-              </li>
-              <li> {/*className="has-children"*/}
-                <a href="#">Noticias</a>
-                {/* <ul className="dropdown arrow-top">
-                  <li><a href="#">Menu One</a></li>
-                  <li><a href="#">Menu Two</a></li>
-                  <li><a href="#">Menu Three</a></li>
-                </ul> */}
-              </li> 
-              <li><a href="#">Partidos</a></li>
-              <li><a href="/TeamsList">Equipos</a></li>
-              <li><a href="#">Acerca de</a></li>
-              <li><a href="/LoadTeam">Cargar Equipo</a></li>
-              <li><a href="/login">Login</a></li>
-              <li><a href="/" onClick={this.logout}>Logout</a></li>
-              <li><a href="/registration">Registrarse</a></li>
-            </ul>
+            {li}
           </div>
         </nav>
       </header>
