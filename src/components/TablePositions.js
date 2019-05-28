@@ -12,7 +12,7 @@ class TablePositions extends React.Component {
     }
 
     componentDidMount() {
-        fetch('api/tablePositions')
+        fetch('/api/tablePositions')
             .then(response => response.json())
             .then(data => this.setState({positions: data}))
             .catch(error => {console.log(error.response)});

@@ -34,7 +34,7 @@ class LoadTeam extends React.Component {
   	}
   
   	fileUpload(file){
-    	const url = 'api/uploadTeam';
+    	const url = '/api/uploadTeam';
     	const formData = new FormData();
     	formData.append('file',file)
     	const config = {

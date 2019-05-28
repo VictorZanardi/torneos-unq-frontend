@@ -34,7 +34,7 @@ class EditPlayer extends React.Component {
 
     handleSubmit(event){
         event.preventDefault();
-        axios.post('api/playerUpdate/'+this.state.id,this.state.player)
+        axios.post('/api/playerUpdate/'+this.state.id,this.state.player)
         .then(function (response) {
             window.location.reload();
         })
