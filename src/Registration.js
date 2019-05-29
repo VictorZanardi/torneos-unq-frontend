@@ -44,24 +44,6 @@ class Registration extends React.Component {
 		this.setState({ user: newUser });
 	};
 
-    /*
-    <form onSubmit={this.handleSubmit}> 
-                    <label htmlFor="username">User name</label>
-                    <input id="username" name="username" type="text" value={this.state.user.username} onChange={this.updateState.bind(this,'username')}/>
-                    <br/>
-
-                    <label htmlFor="password">Password</label>
-                    <input id="password" name="password" value={this.state.user.password} type="text"  onChange={this.updateState.bind(this,'password')}/>
-                    <br/>      
-
-                    <label htmlFor="passwordConfirm">Password Confirm</label>
-                    <input id="passwordConfirm" name="passwordConfirm" value={this.state.user.passwordConfirm} type="text" onChange={this.updateState.bind(this,'passwordConfirm')} />
-                    <br/>
-
-                    <button type="submit" id="submit" name="submit" class="form-btn semibold"> Registrarse</button>
-    </form>
-    */
-
 	render() {
 
 		return (

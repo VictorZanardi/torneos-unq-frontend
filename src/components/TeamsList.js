@@ -9,6 +9,7 @@ import '../css/style.css';
 import {Link} from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import Button from 'react-bootstrap/Button';
 
 class TeamsList extends React.Component {
 
@@ -29,7 +30,23 @@ class TeamsList extends React.Component {
 
     render() {
 
-    	const {teams} = this.state;
+      const {teams} = this.state;
+      var teamsHtml = []
+      if(teams.length > 0){
+          teamsHtml.push(
+            teams.map((team) =>
+
+         	<div className = "row">
+         	<li></li>
+         	<div className="col-lg-3 col-md-6 mb-4">{team.name}
+         	</div>
+         	<div className="col-lg-3 col-md-6 mb-4" >
+         		<Link to= {"/teamsBy/" + team.id + "/" + team.name} className="btn btn-primary">Ver plantilla</Link>
+           </div>
+         	</div>
+         )
+          )
+      }
 
     	return (
       <div>
@@ -40,17 +57,7 @@ class TeamsList extends React.Component {
        <h2 className="text-black">Equipos</h2>
          <div className="row text-center">
          
-         {teams.map((team) =>
-
-         	<div className = "row">
-         	<li></li>
-         	<div className="col-lg-3 col-md-6 mb-4">{team.name}
-         	</div>
-         	<div className="col-lg-3 col-md-6 mb-4">
-         		<Link to= {"/teamsBy/" + team.id + "/" + team.name} className="btn btn-primary">Ver plantilla</Link>
-         	</div>
-         	</div>
-         )}
+         {teamsHtml}
 
          </div>
 

@@ -1,7 +1,30 @@
 import React from 'react';
 import logo from './Logo.png';
+import axios from 'axios';
 
 class Header extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+    
+    this.logout = this.logout.bind(this);  
+}
+
+  logout() {
+    axios.post('api/logout')
+      .then(function (response) {
+        console.log(response);
+        alert("Secion cerrada");
+        window.location.href = "/";
+      })
+      .catch(error => { 
+        console.log(error.response);
+        alert("Secion cerrada");
+        window.location.href = "/";
+      });
+  }
+
   render() {
     return (
       <div>
@@ -72,7 +95,10 @@ class Header extends React.Component {
               <li><a href="/TeamsList">Equipos</a></li>
               <li><a href="/Championship">Torneos</a></li>
               <li><a href="#">Contacto</a></li>
+              <li><a href="#">Acerca de</a></li>
               <li><a href="/LoadTeam">Cargar Equipo</a></li>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/" onClick={this.logout}>Logout</a></li>
               <li><a href="/registration">Registrarse</a></li>
             </ul>
           </div>
