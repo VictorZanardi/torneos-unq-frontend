@@ -20,7 +20,7 @@ class EditPlayer extends React.Component {
     }
 
     componentDidMount() {
-        fetch('api/playerById/'+this.state.id)
+        fetch('/api/playerById/'+this.state.id)
             .then(response => response.json())
             .then(data => this.setState({player: data}))
             .catch(error => {console.log(error.response)});

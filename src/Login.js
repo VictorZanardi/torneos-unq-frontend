@@ -12,6 +12,7 @@ import './vendor/daterangepicker/daterangepicker.css'
 import './css/util.css'
 import './css/main.css'
 import './Login.css'
+import logo from './images/Logo.png';
 
 class Login extends React.Component {
 
@@ -51,23 +52,20 @@ class Login extends React.Component {
     };
 
     render() {
-
         return (
             <div>
-
                 <body>
-
                     <div class="limiter">
                         <div class="container-login100">
                             <div class="wrap-login100">
                                 <form class="login100-form validate-form" onSubmit={this.handleSubmit}>
                                     <span class="login100-form-logo">
-                                        <i class="zmdi zmdi-landscape"></i>
+                                        <img class="logo" src={logo}/>
                                     </span>
 
                                     <span class="login100-form-title p-b-34 p-t-27">
                                         Iniciar Sesión
-					</span>
+                                    </span>
 
                                     <div class="wrap-input100 validate-input" data-validate="Ingrese su Nombre">
                                         <input class="input100" id="username" name="username" type="text" value={this.state.user.username} onChange={this.updateState.bind(this, 'username')} placeholder="Nombre" />
@@ -82,19 +80,18 @@ class Login extends React.Component {
                                     <div class="container-login100-form-btn">
                                         <button class="login100-form-btn">
                                             Ingresar
-						</button>
+						                </button>
                                     </div>
 
                                     <div class="text-center p-t-90">
                                         <a class="txt1" href="#">
                                             Olvido su contraseña?
-						</a>
+						                </a>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
 
                     <div id="dropDownSelect1"></div>
 
@@ -111,7 +108,6 @@ class Login extends React.Component {
                 </body>
 
             </div>
-
         );
     }
 

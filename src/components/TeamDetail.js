@@ -47,7 +47,7 @@ class TeamDetail extends Component {
   getRestClient() {
     if (!this.serviceInstance) {
       this.serviceInstance = axios.create({
-        baseURL: 'http://localhost:8080/api',
+        baseURL: '',
         timeout: 10000,
         headers: {
           'Content-Type': 'application/json'
@@ -59,7 +59,7 @@ class TeamDetail extends Component {
 
   uploadFileToServer(data, idPlayer) {
     //returns Promise object
-    return this.getRestClient().post('api/uploadPhoto/' + idPlayer, data);
+    return this.getRestClient().post('/api/uploadPhoto/' + idPlayer, data);
   }
 
   handleUploadFile = (event, idPlayer) => {

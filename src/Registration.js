@@ -29,7 +29,7 @@ class Registration extends React.Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		axios.post('api/registration', this.state.user)
+		axios.post('/api/registration', this.state.user)
 			.then(function (response) {
 				console.log(response);
 				alert("Se ha registrado exitosamente");
@@ -56,12 +56,12 @@ class Registration extends React.Component {
 							<div class="wrap-login100">
 								<form class="login100-form validate-form" onSubmit={this.handleSubmit}>
 									<span class="login100-form-logo">
-										<i class="zmdi zmdi-landscape"></i>
+										<img class="logo" src={logo}/>
 									</span>
 
 									<span class="login100-form-title p-b-34 p-t-27">
 										Registrarse
-					</span>
+									</span>
 
 									<div class="wrap-input100 validate-input" data-validate="Ingrese su Nombre">
 										<input class="input100" id="username" name="username" type="text" value={this.state.user.username} onChange={this.updateState.bind(this, 'username')} placeholder="Nombre" />
@@ -81,13 +81,13 @@ class Registration extends React.Component {
 									<div class="container-login100-form-btn">
 										<button class="login100-form-btn">
 											Registrarse
-						</button>
+										</button>
 									</div>
 
 									<div class="text-center p-t-90">
 										<a class="txt1" href="#">
 											Olvido su contraseña?
-						</a>
+										</a>
 									</div>
 								</form>
 							</div>

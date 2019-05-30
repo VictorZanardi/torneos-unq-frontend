@@ -13,11 +13,11 @@ class Header extends React.Component {
       this.logout = this.logout.bind(this);  
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get('/api/profile')
-        .then(response => response.json())
         .then(response =>  {
-          if(response.data.statusCode===200){
+          console.log(response.status)
+          if(response.status == 200){
             this.setState({ isLogged: true });
           }  
         })
@@ -41,11 +41,12 @@ class Header extends React.Component {
   render() {
 
     const {isLogged} = this.state;
+    console.log("Render:");
     console.log(isLogged);
 
     var li = [];
 
-    /*if(isLogged){
+    if(isLogged){
       li.push(
         <ul className="site-menu js-clone-nav d-none d-md-block">
           <li><a href="/">Inicio</a></li>
@@ -66,9 +67,9 @@ class Header extends React.Component {
             <li><a href="/registration">Registrarse</a></li>
           </ul>
         );
-    }*/
+    }
 
-    li.push(
+    /*li.push(
       <ul className="site-menu js-clone-nav d-none d-md-block">
         <li><a href="/">Inicio</a></li>
         <li><a href="#">Noticias</a></li> 
@@ -79,7 +80,7 @@ class Header extends React.Component {
         <li><a href="/registration">Registrarse</a></li>
         <li><a href="/" onClick={this.logout}>Logout</a></li>
       </ul>
-    );
+    );*/
 
     return (
       <div>
