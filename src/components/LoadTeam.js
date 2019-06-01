@@ -34,11 +34,7 @@ class LoadTeam extends React.Component {
   	}
   
   	fileUpload(file){
-<<<<<<< HEAD
-    	const url = 'http://localhost:8080/api/uploadTeam';
-=======
     	const url = '/api/uploadTeam';
->>>>>>> dev
     	const formData = new FormData();
     	formData.append('file',file)
     	const config = {

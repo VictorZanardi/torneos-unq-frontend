@@ -37,11 +37,7 @@ class TeamDetail extends Component {
   }
 
   componentDidMount() {
-<<<<<<< HEAD
-    fetch('http://localhost:8080/api/teamBy/' + this.state.id)
-=======
     fetch('/api/teamBy/' + this.state.id)
->>>>>>> dev
       .then(response => response.json())
       .then(data => this.setState({ players: data }))
       .catch(error => { console.log(error.response) });
