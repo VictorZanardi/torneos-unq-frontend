@@ -10,6 +10,7 @@ import TeamDetail from './components/TeamDetail';
 import Championship from './components/Championship';
 import NewChampionship from './components/NewChampionship';
 import EditChampionship from './components/EditChampionship';
+import TeamsChampionship from './components/TeamsChampionship';
 import Registration from './Registration';
 import Login from './Login';
 
@@ -25,6 +26,7 @@ const routing = (
       <Route path="/NewChampionship" component={NewChampionship} />
       <Route path="/registration" component={Registration} />
       <Route path="/EditChampionship" component={EditChampionship} />
+      <Route path="/TeamsChampionship" component={TeamsChampionship} />
       <Route path="/login" component={Login} />
     </div>
   </Router>

@@ -37,7 +37,7 @@ class TeamDetail extends Component {
   }
 
   componentDidMount() {
-    fetch('api/teamBy/' + this.state.id)
+    fetch('http://localhost:8080/api/teamBy/' + this.state.id)
       .then(response => response.json())
       .then(data => this.setState({ players: data }))
       .catch(error => { console.log(error.response) });
@@ -46,7 +46,7 @@ class TeamDetail extends Component {
   getRestClient() {
     if (!this.serviceInstance) {
       this.serviceInstance = axios.create({
-        baseURL: 'http://localhost:8080/api',
+        baseURL: 'http://localhost:8080',
         timeout: 10000,
         headers: {
           'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ class TeamDetail extends Component {
 
   uploadFileToServer(data, idPlayer) {
     //returns Promise object
-    return this.getRestClient().post('api/uploadPhoto/' + idPlayer, data);
+    return this.getRestClient().post('/api/uploadPhoto/' + idPlayer, data);
   }
 
   handleUploadFile = (event, idPlayer) => {

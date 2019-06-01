@@ -23,7 +23,7 @@ class Championship extends React.Component {
   }
 
   componentDidMount() {
-    fetch('api/championships')
+    fetch('http://localhost:8080/api/championships')
         .then(response => response.json())
         .then(data => this.setState({championships: data}));
 }
@@ -47,25 +47,17 @@ render() {
     },
   }))(TableRow);
 
-  // const useStyles = makeStyles(theme => ({
-  //   root: {
-  //     width: '100%',
-  //     marginTop: theme.spacing(3),
-  //     overflowX: 'auto',
-  //   },
-  //   table: {
-  //     minWidth: 700,
-  //   },
-  // }));
-
   const classes = this.props;
   const {championships} = this.state;
     return (
   <div>
     <Header/>
     <div className="site-section">
+      <div>
+        <Link to= {"/NewChampionship"} id="NewChampionship" className="btn btn-primary">Crear Torneo</Link>
+      </div><br/>
       <div className="container">
-        <Link to= {"/NewChampionship"} className="btn btn-primary">Crear Torneo</Link>
+        <Link to= {"/TeamsChampionship"} className="btn btn-primary">Agregar Equipos</Link>
       </div><br/>
       <Paper className={classes.root}>
       <Table className={classes.table}>

@@ -14,8 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import TextField from '@material-ui/core/TextField';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -43,8 +41,8 @@ constructor(props) {
   this.state = {
     open: true,
     championship: {
-      name: "",
-      description: "",
+      name: undefined,
+      description: undefined,
       startDate: undefined,
       finishDate: undefined,
     }
@@ -55,10 +53,11 @@ constructor(props) {
 
 handleSubmit(event){
   event.preventDefault();
-  axios.post('api/championshipCreate/'+this.state.championship)
+  axios.post('http://localhost:8080/api/championshipCreate/'+this.state.championship)
   .then(function (response) {
       window.location.reload();
-  });
+  })
+  .catch(error => {console.log(error.response)});
 }
 
   handleClickOpen = () => {
@@ -82,7 +81,7 @@ handleSubmit(event){
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className="newChampionship"> 
         {/* <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
           Crear Torneo
         </Button> */}
@@ -142,6 +141,7 @@ handleSubmit(event){
                 id="startDate"
                 type="date"
                 label="Fecha Finalizacion"
+                defaultValue="2019-01-01"
                 onChange={this.updateState.bind(this,'startDate')}
               />
             </ListItemText>

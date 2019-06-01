@@ -1,80 +1,121 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
+import * as React from 'react';
+import { makeStyles,withStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
+import axios from 'axios';
+import { Redirect, Link } from 'react-router-dom';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = ({
   root: {
     display: 'flex',
   },
   formControl: {
-    margin: theme.spacing(3),
+    margin: 3,
   },
-}));
+});
 
-function TeamsChampionship() {
-  const classes = useStyles();
-  const [state, setState] = React.useState({
-    gilad: true,
-    jason: false,
-    antoine: false,
-  });
 
-  const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
-  };
 
-  const { gilad, jason, antoine } = state;
-  const error = [gilad, jason, antoine].filter(v => v).length !== 2;
+class TeamsChampionship extends React.Component {
 
-  return (
-    <div className={classes.root}>
-      <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Assign responsibility</FormLabel>
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={gilad} onChange={handleChange('gilad')} value="gilad" />}
-            label="Gilad Gray"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={jason} onChange={handleChange('jason')} value="jason" />}
-            label="Jason Killian"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={antoine} onChange={handleChange('antoine')} value="antoine" />
-            }
-            label="Antoine Llorca"
-          />
-        </FormGroup>
-        <FormHelperText>Be careful</FormHelperText>
-      </FormControl>
-      <FormControl required error={error} component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Pick two</FormLabel>
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={gilad} onChange={handleChange('gilad')} value="gilad" />}
-            label="Gilad Gray"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={jason} onChange={handleChange('jason')} value="jason" />}
-            label="Jason Killian"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={antoine} onChange={handleChange('antoine')} value="antoine" />
-            }
-            label="Antoine Llorca"
-          />
-        </FormGroup>
-        <FormHelperText>You can display an error</FormHelperText>
-      </FormControl>
-    </div>
-  );
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      checkedItems: new Map(),
+      teams: [],
+      idTeams: []
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    const item = e.target.name;
+    const isChecked = e.target.checked;
+    this.setState(this.state.idTeams.push(e.target.id))
+    this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    axios.post('http://localhost:8080/api/addTeams/'+this.state.idTeams)
+    .then(function (response) {
+        window.location.reload();
+    })
+    .catch(error => {console.log(error.response)});
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:8080/api/teams')
+        .then(response => response.json())
+        .then(data => this.setState({teams: data}))
+        .catch(error => {console.log(error.response)});
+}
+
+redirect = () => {
+  return <Redirect to='./Championship' />
+};
+
+  render() {
+
+    const StyledTableCell = withStyles(theme => ({
+      head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+        fontSize: 26,
+      },
+      body: {
+        fontSize: 14,
+      },
+    }))(TableCell);
+    
+    const StyledTableRow = withStyles(theme => ({
+      root: {
+        '&:nth-of-type(odd)': {
+          backgroundColor: theme.palette.background.default,
+        },
+      },
+    }))(TableRow);
+
+    const {teams} = this.state;
+
+    return (
+      <React.Fragment>
+          <Table >
+        <TableHead>
+          <TableRow>
+            <StyledTableCell align="center">Agregar equipos al torneo</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+        {
+          teams.map(team => (
+                 <label>
+                 {team.name}
+                 <Checkbox id= {team.id} name={team.name} checked={this.state.checkedItems.get(team.name)} onChange={this.handleChange} />
+               </label>
+          ))
+        }
+        </TableBody>
+      </Table>
+      <br/>
+       <Button variant="contained" color="primary" onClick={this.handleSubmit} style={{marginRight: 10}}> 
+          Guardar
+        </Button>
+        <Link to={"./Championship"}>
+        <Button variant="contained" color="secondary" >
+          Volver
+        </Button>  
+        </Link>
+      </React.Fragment>
+    );
+  }
 }
 
 export default TeamsChampionship;
