@@ -82,11 +82,7 @@ handleSubmit(event){
     const { classes } = this.props;
     return (
       <div className="newChampionship"> 
-        {/* <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-          Crear Torneo
-        </Button> */}
         <Dialog
-          fullScreen
           open={this.state.open}
           onClose={this.handleClose}
           TransitionComponent={Transition}

@@ -12,7 +12,7 @@ import './vendor/daterangepicker/daterangepicker.css'
 import './css/util.css'
 import './css/main.css'
 import './Login.css'
-import logo from './images/Logo.png';
+import logo from './images/logo.png';
 
 class Login extends React.Component {
 

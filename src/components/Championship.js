@@ -9,8 +9,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
-import Icon from '@material-ui/core/Icon';
+import Moment from 'react-moment';
+import { TiEdit } from "react-icons/ti";
+import Button from 'react-bootstrap/Button';
 
 class Championship extends React.Component {
 
@@ -53,12 +54,10 @@ render() {
   <div>
     <Header/>
     <div className="site-section">
-      <div>
-        <Link to= {"/NewChampionship"} id="NewChampionship" className="btn btn-primary">Crear Torneo</Link>
-      </div><br/>
-      <div className="container">
-        <Link to= {"/TeamsChampionship"} className="btn btn-primary">Agregar Equipos</Link>
-      </div><br/>
+      <div  style={{marginLeft:10}}>
+        <Link to= {"/NewChampionship"} id="NewChampionship" className="btn btn-primary"  style={{marginRight:10}}>Crear Torneo</Link>
+        <Link to= {"/TeamsChampionship"} className="btn btn-primary">Agregar Equipos</Link>      
+      </div> <br/>
       <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
@@ -73,16 +72,26 @@ render() {
         <TableBody>
           {championships.map(championship => (
             <StyledTableRow key={championship.name}>
-              <StyledTableCell component="th" scope="row">
+              <StyledTableCell  component="th" scope="row" align="center">
                 {championship.name}
               </StyledTableCell>
               <StyledTableCell align="center">{championship.description}</StyledTableCell>
-              {/* <StyledTableCell align="right">{championship.startDate}</StyledTableCell> */}
-              {/* <StyledTableCell align="right">{championship.finishDate}</StyledTableCell> */}
               <StyledTableCell align="center">
-                <Fab color="primary" aria-label="Edit" >
-                <Icon></Icon>
-              </Fab>
+                <Moment format="DD/MM/YYYY">
+                {championship.startDate}
+               </Moment>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <Moment format="DD/MM/YYYY">
+                {championship.finishDate}
+               </Moment>
+              </StyledTableCell>              
+              <StyledTableCell align="center">
+              <Link to= {"/EditChampionship"}>
+              <Button variant="info">
+                <TiEdit />
+              </Button>
+              </Link>
               </StyledTableCell>
             </StyledTableRow>
           ))}
