@@ -60,7 +60,7 @@ class CreatePlayer extends React.Component {
                     <Modal.Title>Crear Jugador</Modal.Title>
                 </Modal.Header>
             <Modal.Body>  
-                <form> 
+                <form className="formCreatePlayer"> 
                     <label htmlFor="name">Nombre</label>
                     <input id="name" name="name" type="text" value={this.state.player.name} onChange={this.updateState.bind(this,'name')}/>
                     <br/>

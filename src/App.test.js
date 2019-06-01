@@ -4,9 +4,10 @@ import App from './App';
 import 'jest-enzyme'
 import { configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { shallow } from 'enzyme'
+import { shallow ,mount,render} from 'enzyme'
 import Championship from './components/Championship';
 import NewChampionship from './components/NewChampionship';
+import CreatePlayer from './components/CreatePlayer';
 
 configure({ adapter: new Adapter() })
 
@@ -25,4 +26,9 @@ it('Boton Crear Torneo redirecciona bien', () => {
   const btnNuevoTorneo = wrapper.find('#NewChampionship')
   btnNuevoTorneo.simulate('click')
   wrapper.instance(<NewChampionship/>)
+})
+
+it('Formulario se crea bien', () => {
+  const wrapper = shallow(<CreatePlayer />);
+  expect(wrapper.find('.formCreatePlayer'));
 })

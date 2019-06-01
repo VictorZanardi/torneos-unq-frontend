@@ -77,7 +77,7 @@ render() {
                 {championship.name}
               </StyledTableCell>
               <StyledTableCell align="center">{championship.description}</StyledTableCell>
-              <StyledTableCell align="right">{championship.startDate}</StyledTableCell>
+              {/* <StyledTableCell align="right">{championship.startDate}</StyledTableCell> */}
               {/* <StyledTableCell align="right">{championship.finishDate}</StyledTableCell> */}
               <StyledTableCell align="center">
                 <Fab color="primary" aria-label="Edit" >
