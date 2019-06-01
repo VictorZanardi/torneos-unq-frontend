@@ -13,13 +13,13 @@ class Matches extends React.Component {
     }
 
     componentDidMount() {
-        fetch('api/matches')
+        fetch('/api/matches')
             .then(response => response.json())
             .then(data => 
                 this.setState({matches: data}))
                 .catch(error => {console.log(error.response)});
 
-        fetch('api/fixture')
+        fetch('/api/fixture')
             .then(response => response.json())
             .then(data => 
                 this.setState({matchWeek: data}))
@@ -28,10 +28,8 @@ class Matches extends React.Component {
 
     render() {
 
-        //const {info} = this.state;
         const {matches} = this.state;
         const {matchWeek} = this.state;
-        console.log(matchWeek)
 
         var liMatchWeek = [];
         var divMatches = [];

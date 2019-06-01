@@ -37,7 +37,11 @@ class TeamDetail extends Component {
   }
 
   componentDidMount() {
+<<<<<<< HEAD
     fetch('http://localhost:8080/api/teamBy/' + this.state.id)
+=======
+    fetch('/api/teamBy/' + this.state.id)
+>>>>>>> dev
       .then(response => response.json())
       .then(data => this.setState({ players: data }))
       .catch(error => { console.log(error.response) });
@@ -46,7 +50,7 @@ class TeamDetail extends Component {
   getRestClient() {
     if (!this.serviceInstance) {
       this.serviceInstance = axios.create({
-        baseURL: 'http://localhost:8080',
+        baseURL: '',
         timeout: 10000,
         headers: {
           'Content-Type': 'application/json'

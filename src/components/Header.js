@@ -6,13 +6,26 @@ class Header extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
-    
-    this.logout = this.logout.bind(this);  
-}
+      this.state = {
+        isLogged: false
+      };
+
+      this.logout = this.logout.bind(this);  
+  }
+
+  componentWillMount() {
+    axios.get('/api/profile')
+        .then(response =>  {
+          console.log(response.status)
+          if(response.status == 200){
+            this.setState({ isLogged: true });
+          }  
+        })
+        .catch(error => {console.log(error.response)});
+  }
 
   logout() {
-    axios.post('api/logout')
+    axios.post('/api/logout')
       .then(function (response) {
         console.log(response);
         alert("Secion cerrada");
@@ -26,6 +39,49 @@ class Header extends React.Component {
   }
 
   render() {
+
+    const {isLogged} = this.state;
+    console.log("Render:");
+    console.log(isLogged);
+
+    var li = [];
+
+    if(isLogged){
+      li.push(
+        <ul className="site-menu js-clone-nav d-none d-md-block">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="#">Noticias</a></li> 
+          <li><a href="#">Partidos</a></li>
+          <li><a href="/TeamsList">Equipos</a></li>
+          <li><a href="/LoadTeam">Cargar Equipo</a></li>
+          <li><a href="/" onClick={this.logout}>Logout</a></li>
+        </ul>
+      );
+    } else {
+        li.push(
+          <ul className="site-menu js-clone-nav d-none d-md-block">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="#">Noticias</a></li> 
+            <li><a href="#">Partidos</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/registration">Registrarse</a></li>
+          </ul>
+        );
+    }
+
+    /*li.push(
+      <ul className="site-menu js-clone-nav d-none d-md-block">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="#">Noticias</a></li> 
+        <li><a href="#">Partidos</a></li>
+        <li><a href="/TeamsList">Equipos</a></li>
+        <li><a href="/LoadTeam">Cargar Equipo</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/registration">Registrarse</a></li>
+        <li><a href="/" onClick={this.logout}>Logout</a></li>
+      </ul>
+    );*/
+
     return (
       <div>
       <meta charSet="utf-8" />
@@ -101,6 +157,7 @@ class Header extends React.Component {
               <li><a href="/" onClick={this.logout}>Logout</a></li>
               <li><a href="/registration">Registrarse</a></li>
             </ul>
+            {li}
           </div>
         </nav>
       </header>
