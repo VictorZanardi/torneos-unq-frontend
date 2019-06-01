@@ -44,7 +44,7 @@ class TeamsChampionship extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    axios.post('http://localhost:8080/api/addTeams/'+this.state.idTeams)
+    axios.post('/api/addTeams/'+this.state.idTeams)
     .then(function (response) {
         window.location.reload();
     })
@@ -52,7 +52,7 @@ class TeamsChampionship extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8080/api/teams')
+    fetch('/api/teams')
         .then(response => response.json())
         .then(data => this.setState({teams: data}))
         .catch(error => {console.log(error.response)});

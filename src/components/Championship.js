@@ -23,7 +23,7 @@ class Championship extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8080/api/championships')
+    fetch('/api/championships')
         .then(response => response.json())
         .then(data => this.setState({championships: data}));
 }

@@ -53,7 +53,7 @@ constructor(props) {
 
 handleSubmit(event){
   event.preventDefault();
-  axios.post('http://localhost:8080/api/championshipCreate/'+this.state.championship)
+  axios.post('/api/championshipCreate/',this.state.championship)
   .then(function (response) {
       window.location.reload();
   })

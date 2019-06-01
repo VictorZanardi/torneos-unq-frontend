@@ -48,7 +48,7 @@ constructor(props) {
 };
 
 componentDidMount() {
-    fetch('api/championshipById/'+this.state.id)
+    fetch('/api/championshipById/'+this.state.id)
         .then(response => response.json())
         .then(data => this.setState({championship: data}))
         .catch(error => {console.log(error.response)});
@@ -56,7 +56,7 @@ componentDidMount() {
 
 handleSubmit(event){
   event.preventDefault();
-  axios.post('api/championshipUpdate/'+this.state.championship)
+  axios.post('/api/championshipUpdate/'+this.state.championship)
   .then(function (response) {
       window.location.reload();
   });
