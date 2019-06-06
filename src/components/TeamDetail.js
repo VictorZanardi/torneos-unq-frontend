@@ -16,6 +16,7 @@ import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { TiDelete } from "react-icons/ti";
+import defaultPhoto from '../images/playerDefault.png';
 
 var sectionStyle = {
   width: "100%",
@@ -34,6 +35,8 @@ class TeamDetail extends Component {
       players: [],
       smShow: false
     };
+
+    this.defaultPhotoPlayer = this.defaultPhotoPlayer.bind(this);
   }
 
   componentDidMount() {
@@ -85,11 +88,19 @@ class TeamDetail extends Component {
   };
 
   delete(id) {
-    axios.delete('api/deletePlayer/' + id)
+    axios.delete('/api/deletePlayer/' + id)
       .then(function (response) {
         alert("Subasta Eliminada!!!");
         window.location.reload();
       });
+  }
+
+  defaultPhotoPlayer(photo) {
+    if (photo != null) {
+      return 'data:image/jpeg;base64,' + photo;
+    } else {
+      return defaultPhoto;
+    }
   }
 
 
@@ -115,7 +126,7 @@ class TeamDetail extends Component {
 
                 <Card>
                   <blockquote className="blockquote mb-0 card-body">
-                    <Card.Img variant="top" src={'data:image/jpeg;base64,' + player.photo} />
+                    <Card.Img variant="top" src={this.defaultPhotoPlayer(player.photo)} />
                     <Card.Body>
                       <Card.Title>{player.name}</Card.Title>
                       <Card.Title>{player.lastName}</Card.Title>
