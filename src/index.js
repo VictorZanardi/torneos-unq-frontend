@@ -13,6 +13,8 @@ import EditChampionship from './components/EditChampionship';
 import TeamsChampionship from './components/TeamsChampionship';
 import Registration from './Registration';
 import Login from './Login';
+import MatchesList from './components/MatchesList';
+import MatchDetail from './components/MatchDetail';
 
 
 const routing = (
@@ -28,6 +30,8 @@ const routing = (
       <Route path="/EditChampionship" component={EditChampionship} />
       <Route path="/TeamsChampionship" component={TeamsChampionship} />
       <Route path="/login" component={Login} />
+      <Route path="/MatchesList" component={MatchesList} />
+      <Route path="/matchBy/:id/:teamAId/:teamBId" component={MatchDetail} />
     </div>
   </Router>
 )
