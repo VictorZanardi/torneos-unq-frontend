@@ -9,6 +9,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
+import { SnackbarContent } from '@material-ui/core';
+import ErrorIcon from '@material-ui/icons/Error';
+import Snackbar from '@material-ui/core/Snackbar';
 
 const useStyles = ({
   root: {
@@ -27,40 +30,83 @@ class TeamsChampionship extends React.Component {
     super(props);
 
     this.state = {
-      checkedItems: new Map(),
       teams: [],
-      idTeams: []
-    }
-
-    this.handleChange = this.handleChange.bind(this);
+      message: ''
+    };
+  }
+  
+  componentDidMount() {
+    this.selectedTeams = [];
+    
   }
 
-  handleChange(e) {
-    const item = e.target.name;
-    const isChecked = e.target.checked;
-    this.setState(this.state.idTeams.push(e.target.id))
-    this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    axios.post('/api/addTeams/'+this.state.idTeams)
-    .then(function (response) {
-        window.location.reload();
-    })
+  componentWillMount = () => {
+    fetch('/api/teamsNotAssigned')
+    .then(response => response.json())
+    .then(data => this.setState({teams: data}))
     .catch(error => {console.log(error.response)});
   }
 
-  componentDidMount() {
-    fetch('/api/teams')
-        .then(response => response.json())
-        .then(data => this.setState({teams: data}))
-        .catch(error => {console.log(error.response)});
+  handleAllChecked = (event) => {
+    let teams = this.state.teams
+    teams.forEach(team => team.isChecked = event.target.checked) 
+    this.setState({teams: teams})
+  }
+
+  handleCheckChieldElement = (event) => {
+    let teams = this.state.teams
+    teams.forEach(team => {
+       if (team.name === event.target.name)
+          team.isChecked =  event.target.checked
+    })
+    this.setState({teams: teams})
+  }
+
+  handleSubmit = (event) => {
+    let teams = this.state.teams
+    if (teams.length == 0)
+    {
+      this.setState({openErrorModal : true,message: "Todos los equipos se encuentran agregados al torneo"})
+    }
+    else{
+      teams.forEach(team => {
+        if(team.isChecked)
+        {
+         this.selectedTeams.push(team.id);
+        }
+      })
+
+    if(this.selectedTeams.length == 0)
+    {
+    this.setState({openErrorModal : true,message:"Debe seleccionar al menos un equipo antes de guardar"});
+    }
+    else
+    {
+      event.preventDefault();
+      axios.post('/api/addTeams/',this.selectedTeams)
+      .then(function (response) {
+          window.location.replace('./Championship');
+      })
+      .catch(error => {console.log(error.response)});
+      }
+    }
 }
 
-redirect = () => {
-  return <Redirect to='./Championship' />
-};
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ openErrorModal: false });
+  };
+
+  redirect = () => {
+    return <Redirect to='./Championship' />
+  };
 
   render() {
 
@@ -83,9 +129,25 @@ redirect = () => {
       },
     }))(TableRow);
 
-    const {teams} = this.state;
+    const {teams,message} = this.state;
 
     return (
+      <div>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={this.state.openErrorModal}
+        autoHideDuration={3000}
+        onClose={this.handleCloseModal}
+      >     
+        <SnackbarContent
+          variant="error"
+          message={<label><ErrorIcon/> {message}</label>}
+          style={{backgroundColor: "red"}}
+        />
+      </Snackbar>
       <React.Fragment>
           <Table >
         <TableHead>
@@ -94,11 +156,12 @@ redirect = () => {
           </TableRow>
         </TableHead>
         <TableBody>
+        <input type="checkbox" onClick={this.handleAllChecked}  value="checkedall" /> Seleccionar Todo
         {
           teams.map(team => (
                  <label>
+                 <input type="checkbox" key={team.id} id= {team.id} name={team.name} onClick={this.handleCheckChieldElement} checked={team.isChecked} value={team.value}/>
                  {team.name}
-                 <Checkbox id= {team.id} name={team.name} checked={this.state.checkedItems.get(team.name)} onChange={this.handleChange} />
                </label>
           ))
         }
@@ -114,6 +177,7 @@ redirect = () => {
         </Button>  
         </Link>
       </React.Fragment>
+      </div>
     );
   }
 }

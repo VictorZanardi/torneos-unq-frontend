@@ -11,7 +11,10 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Moment from 'react-moment';
 import { TiEdit } from "react-icons/ti";
+import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { TiDelete } from "react-icons/ti";
+import axios from 'axios';
 
 class Championship extends React.Component {
 
@@ -19,7 +22,8 @@ class Championship extends React.Component {
     super(props);
 
     this.state = {
-      championships: []
+      championships: [],
+      smShow: false
     };
   }
 
@@ -28,6 +32,15 @@ class Championship extends React.Component {
         .then(response => response.json())
         .then(data => this.setState({championships: data}));
 }
+
+  deleteChampionship(id)
+  {
+    axios.delete('/api/deleteChampionship/' + id)
+    .then(function (response) {
+      alert("Torneo Eliminado!!!");
+      window.location.reload();
+    });
+  }
 
 render() {
   const StyledTableCell = withStyles(theme => ({
@@ -50,6 +63,8 @@ render() {
 
   const classes = this.props;
   const {championships} = this.state;
+  let smClose = () => this.setState({ smShow: false });
+
     return (
   <div>
     <Header/>
@@ -87,12 +102,25 @@ render() {
                </Moment>
               </StyledTableCell>              
               <StyledTableCell align="center">
-              <Link to= {"/EditChampionship"}>
+              <Link to= {"/EditChampionship/" + championship.id}>
               <Button variant="info">
                 <TiEdit />
               </Button>
               </Link>
+            <span> </span>
+              <Button variant="danger" onClick={() => this.setState({ smShow: true })}>
+                        <TiDelete />
+                </Button>
               </StyledTableCell>
+                  <Modal centered="true" class="modal-dialog modal-sm" show={this.state.smShow} onHide={smClose} aria-labelledby="example-modal-sizes-title-sm">
+                        <Modal.Body>
+                          ¿Esta seguro de eliminar el torneo?
+                          </Modal.Body>
+                        <Modal.Footer>
+                          <Button variant="secondary" onClick={smClose}> No </Button>
+                          <Button variant="danger" onClick={this.deleteChampionship.bind(this, championship.id)}>Si</Button>
+                        </Modal.Footer>
+                  </Modal>
             </StyledTableRow>
           ))}
         </TableBody>

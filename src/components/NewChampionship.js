@@ -60,7 +60,7 @@ constructor(props) {
 
 handleSubmit(event){  
   event.preventDefault();
-  this.validateName();
+  this.validateForm();
   if (this.state.nameError !== null || 
       this.state.descriptionError !== null || 
       this.state.startDateError !== null || 
@@ -73,7 +73,7 @@ handleSubmit(event){
   {
     axios.post('/api/championshipCreate/',this.state.championship)
     .then(function (response) {
-      return <Redirect to='./Championship' />
+     window.location.close()  
   })
   .catch(error => {console.log(error.response)});
   }
@@ -99,11 +99,11 @@ handleSubmit(event){
   updateState = (name,event) => {
       let newChampionship = Object.assign({},this.state.championship);
       newChampionship[name] = event.target.value;
-      this.validateName();
+      this.validateForm();
       this.setState({championship:newChampionship});
   };
 
-  validateName = () => {
+  validateForm = () => {
     const { name,description,startDate,finishDate } = this.state.championship;
     this.setState({
       nameError: name.length > 5 ? null : "Por favor complete un nombre valido para el torneo",
@@ -115,7 +115,6 @@ handleSubmit(event){
 
   render() {
     const { classes } = this.props;
-    const {setOpen} = this.state
     return (
       <div className="newChampionship">
         <Dialog
@@ -168,7 +167,7 @@ handleSubmit(event){
                 fullWidth
                 onChange={this.updateState.bind(this,'name')}
                 value={this.state.championship.name}
-                onBlur={this.validateName}
+                onBlur={this.validateForm}
                 className={`form-control ${this.state.nameError ? 'is-invalid' : ''}`}
               />
             </ListItem>
@@ -185,7 +184,7 @@ handleSubmit(event){
                 fullWidth
                 onChange={this.updateState.bind(this,'description')}
                 value={this.state.championship.description}
-                onBlur={this.validateName}
+                onBlur={this.validateForm}
                 className={`form-control ${this.state.descriptionError ? 'is-invalid' : ''}`}
               />
             </ListItem>
@@ -199,7 +198,7 @@ handleSubmit(event){
                 label="Fecha Finalizacion"
                 onChange={this.updateState.bind(this,'startDate')}
                 className={`form-control ${this.state.startDateError ? 'is-invalid' : ''}`}
-                onBlur={this.validateName}
+                onBlur={this.validateForm}
               />
             </ListItemText>
             <ListItem className='invalid-feedback' style={{marginTop:"-10px"}}>{this.state.startDateError}</ListItem >
@@ -213,7 +212,7 @@ handleSubmit(event){
                 onChange={this.updateState.bind(this,'finishDate')}
                 value={this.state.championship.finishDate}
                 className={`form-control ${this.state.finishDateError ? 'is-invalid' : ''}`}
-                onBlur={this.validateName}
+                onBlur={this.validateForm}
               />
             </ListItemText>
             <ListItem className='invalid-feedback' style={{marginTop:"-10px"}}>{this.state.finishDateError}</ListItem >

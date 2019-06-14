@@ -25,7 +25,7 @@ const routing = (
       <Route path="/Championship" component={Championship} />
       <Route path="/NewChampionship" component={NewChampionship} />
       <Route path="/registration" component={Registration} />
-      <Route path="/EditChampionship" component={EditChampionship} />
+      <Route path="/EditChampionship/:id" component={EditChampionship} />
       <Route path="/TeamsChampionship" component={TeamsChampionship} />
       <Route path="/login" component={Login} />
     </div>

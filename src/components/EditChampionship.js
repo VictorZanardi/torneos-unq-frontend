@@ -13,9 +13,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-import Input from '@material-ui/core/Input';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
+import Header from './Header';
+import { SnackbarContent } from '@material-ui/core';
+import ErrorIcon from '@material-ui/icons/Error';
+import Snackbar from '@material-ui/core/Snackbar';
 
 
 const styles = {
@@ -41,7 +44,12 @@ constructor(props) {
   this.state = {
     open: true,
     championship: {},
-      id: this.props.id    
+      id: this.props.match.params.id,
+      openErrorModal: false,
+      nameError:null,
+      descriptionError:null,
+      startDateError:null,
+      finishDateError:null,  
   };  
   this.handleSubmit = this.handleSubmit.bind(this);
   this.handleClose = this.handleClose.bind(this);   
@@ -56,14 +64,30 @@ componentDidMount() {
 
 handleSubmit(event){
   event.preventDefault();
-  axios.post('/api/championshipUpdate/'+this.state.championship)
-  .then(function (response) {
-      window.location.reload();
-  });
+  this.validateForm();
+  if (this.state.nameError !== null || 
+      this.state.descriptionError !== null || 
+      this.state.startDateError !== null || 
+      this.state.finishDateError !== null)
+  {
+        
+      this.setState({openErrorModal : true});
+  }
+  else
+  {
+    axios.post('/api/championshipUpdate/'+this.state.id,this.state.championship)
+    .then(function (response) {
+        window.location.replace("../Championship");
+    });
+  }
 }
 
   handleClose = () => {
     this.setState({ open: false });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ openErrorModal: false });
   };
 
   redirect = () => {
@@ -76,19 +100,46 @@ handleSubmit(event){
       this.setState({championship:newChampionship});
   };
 
+  validateForm = () => {
+    const { name,description,startDate,finishDate } = this.state.championship;
+    this.setState({
+      nameError: name.length > 5 ? null : "Por favor complete un nombre valido para el torneo",
+      descriptionError: description.length > 10 ? null: "Por favor complete una descripción mayor a 10 caracteres",
+      startDateError: startDate !== '' ? null : "Por favor ingrese una fecha de inicio para el torneo",
+      finishDateError: finishDate !== '' ? null : "Por favor ingrese una fecha de fin para el torneo",
+    });
+  }
+
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className="editChampionship">
         <Dialog
-          fullScreen
           open={this.state.open}
           onClose={this.handleClose}
           TransitionComponent={Transition}
+          fullScreen
         >
-          <AppBar className={classes.appBar} style={{backgroundColor:"#d50000"}} >
+        <Header/>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={this.state.openErrorModal}
+        autoHideDuration={3000}
+        onClose={this.handleCloseModal}
+      >     
+        <SnackbarContent
+          onClose={this.handleCloseModal}
+          variant="error"
+          message={<label><ErrorIcon/> {"Por favor complete todos los campos antes de guardar"}</label>}
+          style={{backgroundColor: "red"}}
+        />
+      </Snackbar>
+          <AppBar className={classes.appBar} style={{backgroundColor:"#d50000",marginTop:"30px"}} >
             <Toolbar>
-            <Link to={"./Championship"} style={{color:"inherit"}}>            
+            <Link to={"../Championship"} style={{color:"inherit"}}>            
               <IconButton color="inherit"  aria-label="Close">
               <CloseIcon/>
               </IconButton>
@@ -103,40 +154,50 @@ handleSubmit(event){
           </AppBar>
           <List>
            <ListItem >
-              <Input
+              <input
                 label="Nombre"
-                className={classes.input}
+                placeholder="Ingrese un nombre para el torneo"
                 inputProps={{
                   'aria-label': 'Description',
                 }}
                 fullWidth
                 onChange={this.updateState.bind(this,'name')}
                 value={this.state.championship.name}
+                onBlur={this.validateForm}
+                className={`form-control ${this.state.nameError ? 'is-invalid' : ''}`}
               />
             </ListItem>
+            <ListItem className='invalid-feedback' style={{marginTop:"-10px"}}>{this.state.nameError}</ListItem >
             <Divider />
             <ListItem >
-              <Input
+              <input
                 label="Descripción"
-                className={classes.input}
+                placeholder="Ingrese una descripción"
                 inputProps={{
                   'aria-label': 'Description',
                 }}
                 fullWidth
                 onChange={this.updateState.bind(this,'description')}
                 value={this.state.championship.description}
+                onBlur={this.validateForm}
+                className={`form-control ${this.state.descriptionError ? 'is-invalid' : ''}`}
               />
             </ListItem>
+            <ListItem className='invalid-feedback' style={{marginTop:"-10px"}}>{this.state.descriptionError}</ListItem >
             <Divider />
             <ListItemText >
             <label htmlFor="startDate">Fecha Inicio</label>
             <input
                 id="startDate"
                 type="date"
-                label="Fecha Finalizacion"
+                label="Fecha Inicio"
                 onChange={this.updateState.bind(this,'startDate')}
+                value={this.state.championship.startDate}
+                className={`form-control ${this.state.startDateError ? 'is-invalid' : ''}`}
+                onBlur={this.validateForm}
               />
             </ListItemText>
+            <ListItem className='invalid-feedback' style={{marginTop:"-10px"}}>{this.state.startDateError}</ListItem >
             <Divider />
             <ListItemText>
             <label htmlFor="finishDate">Fecha Finalizacion</label>
@@ -146,8 +207,11 @@ handleSubmit(event){
                 label="Fecha Finalizacion"
                 onChange={this.updateState.bind(this,'finishDate')}
                 value={this.state.championship.finishDate}
+                className={`form-control ${this.state.finishDateError ? 'is-invalid' : ''}`}
+                onBlur={this.validateForm}
               />
             </ListItemText>
+            <ListItem className='invalid-feedback' style={{marginTop:"-10px"}}>{this.state.finishDateError}</ListItem >
           </List>
         </Dialog>
       </div>
