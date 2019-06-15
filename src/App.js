@@ -18,7 +18,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header/>
+        <Header />
 
         <div className="site-blocks-vs site-section bg-light">
           <div className="container">
@@ -39,7 +39,7 @@ class App extends React.Component {
                 </div>
               </div>
             </div> */}
-            <div className="bg-image overlay-success rounded mb-5" style={{backgroundImage: 'url("images/hero_bg_1.jpg")'}} data-stellar-background-ratio="0.5">
+            <div className="bg-image overlay-success rounded mb-5" style={{ backgroundImage: 'url("images/hero_bg_1.jpg")' }} data-stellar-background-ratio="0.5">
               <div className="row align-items-center">
                 <div className="col-md-12 col-lg-4 mb-4 mb-lg-0">
                   <div className="text-center text-lg-left">
@@ -211,7 +211,7 @@ class App extends React.Component {
           </div>*/}
           </div>
         </div>
-      <Footer/>
+        <Footer />
       </div>
     );
   }
