@@ -133,8 +133,7 @@ class MatchDetail extends Component {
             matchweek: match.matchweek,
             statisticPlayer: statistic
         };
-        console.log("console.log(statistic);");
-        console.log(statistic);
+
         axios.post('/api/matchUpdate/' + this.state.id, gameDTO)
             .then(function (response) {
                 window.location.reload();
@@ -245,7 +244,7 @@ class MatchDetail extends Component {
 
                                                     <tr class="row100 body">
                                                         <td class="cell100 column2">
-                                                            <PhotoPlayer photo={playerA.photo} name={playerA.name + " " + playerA.lastName}/>
+                                                            <PhotoPlayer photo={playerA.photo} name={playerA.name + " " + playerA.lastName} />
                                                         </td>
                                                         <td class="cell100 column3">{playerA.dni}</td>
                                                         <td class="cell100 column4">
@@ -307,7 +306,7 @@ class MatchDetail extends Component {
 
                                                     <tr class="row100 body">
                                                         <td class="cell100 column2">
-                                                            <PhotoPlayer photo={playerB.photo} name={playerB.name + " " + playerB.lastName}/>
+                                                            <PhotoPlayer photo={playerB.photo} name={playerB.name + " " + playerB.lastName} />
                                                         </td>
                                                         <td class="cell100 column3">{playerB.dni}</td>
                                                         <td class="cell100 column4">
