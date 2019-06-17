@@ -33,18 +33,15 @@ class MatchesList extends React.Component {
         var matchesHtml = []
         if (matches.length > 0) {
             matchesHtml.push(
-                matches.map((match) =>
+                <ul>
+                {matches.map((match) =>
 
-                    <div className="row">
-                        <li></li>
-                        <div className="col-lg-3 col-md-6 mb-4">
-                            {match.teamA.name + " vs " + match.teamB.name}
-                        </div>
-                        <div className="col-lg-3 col-md-6 mb-4" >
+                        <li>
+                            {match.teamA.name + " vs " + match.teamB.name + " "}
                             <Link to={"/matchBy/" + match.id + "/" + match.teamA.id + "/" + + match.teamB.id} className="btn btn-primary">Gestionar</Link>
-                        </div>
-                    </div>
-                )
+                        </li>
+                )}
+                </ul>
             )
         }
 

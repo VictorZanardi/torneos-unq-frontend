@@ -13,6 +13,9 @@ import Header from './Header';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import defaultPhoto from '../images/playerDefault.png';
+import PhotoPlayer from './PhotoPlayer.js';
 
 class MatchDetail extends Component {
 
@@ -50,6 +53,7 @@ class MatchDetail extends Component {
                         var current = listData[i]
                         statisticTeam.push(
                             {
+                                id: current.id,
                                 name: current.name,
                                 lastName: current.lastName,
                                 dni: current.dni,
@@ -76,6 +80,7 @@ class MatchDetail extends Component {
                         var current = listData[i]
                         statisticTeam.push(
                             {
+                                id: current.id,
                                 name: current.name,
                                 lastName: current.lastName,
                                 dni: current.dni,
@@ -100,7 +105,7 @@ class MatchDetail extends Component {
             newTeamA[index][name] = parseInt(event.target.value);
             this.setState({ teamA: newTeamA });
         } else {
-            if(type == "teamB"){
+            if (type == "teamB") {
                 let newTeamB = Object.assign([], this.state.teamB);
                 newTeamB[index][name] = parseInt(event.target.value);
                 this.setState({ teamB: newTeamB });
@@ -108,17 +113,33 @@ class MatchDetail extends Component {
                 let newMatch = Object.assign({}, this.state.match);
                 newMatch[name] = parseInt(event.target.value);
                 this.setState({ match: newMatch });
-            }  
+            }
         }
     };
 
-    handleSubmit(event){
+    handleSubmit(event) {
         event.preventDefault();
-        axios.post('/api/matchUpdate/'+this.state.id,this.state.match)
-        .then(function (response) {
-            window.location.reload();
-        })
-        .catch(error => {console.log(error.response)});
+        const { match } = this.state;
+        const statistic = this.state.teamA.concat(this.state.teamB);
+        const gameDTO = {
+            teamAId: match.teamAId,
+            teamAName: match.teamAName,
+            teamBId: match.teamBId,
+            teamBName: match.teamBName,
+            date: match.date,
+            startTime: match.startTime,
+            goalsTeamA: match.goalsTeamA,
+            goalsTeamB: match.goalsTeamB,
+            matchweek: match.matchweek,
+            statisticPlayer: statistic
+        };
+        console.log("console.log(statistic);");
+        console.log(statistic);
+        axios.post('/api/matchUpdate/' + this.state.id, gameDTO)
+            .then(function (response) {
+                window.location.reload();
+            })
+            .catch(error => { console.log(error.response) });
     }
 
     render() {
@@ -127,7 +148,7 @@ class MatchDetail extends Component {
         const { teamB } = this.state;
         const { match } = this.state;
         let smClose = () => this.setState({ smShow: false });
-        console.log(match);
+        //console.log(teamA);
 
         return (
             <div>
@@ -153,13 +174,13 @@ class MatchDetail extends Component {
                                 <div className="d-inline-block">
                                     <p className="mb-2"><small className="text-uppercase text-black font-weight-bold">{"Fecha " + match.matchweek}</small></p>
                                     <div className="score py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                    <span className="h3">
-                                            <input id="goalsTeamA" className="score2" name="goalsTeamA" type="number" value={match.goalsTeamA} min="0" onChange={this.updateState.bind(this, "goalsTeamA",0, "match")}/>
-                                    </span>   
+                                        <span className="h3">
+                                            <input id="goalsTeamA" className="score2" name="goalsTeamA" type="number" value={match.goalsTeamA} min="0" onChange={this.updateState.bind(this, "goalsTeamA", 0, "match")} />
+                                        </span>
                                     </div>
                                     <div className="score py-2 px-4 mb-2 text-white d-inline-block rounded">
                                         <span className="h3">
-                                        <input id="goalsTeamB" className="score2" name="goalsTeamB" type="number" value={match.goalsTeamB} min="0" onChange={this.updateState.bind(this, "goalsTeamB",0, "match")}/>
+                                            <input id="goalsTeamB" className="score2" name="goalsTeamB" type="number" value={match.goalsTeamB} min="0" onChange={this.updateState.bind(this, "goalsTeamB", 0, "match")} />
                                         </span>
                                     </div>
                                     <p className="mb-0"><small className="text-uppercase text-black font-weight-bold">{match.date} - {match.startTime}</small></p>
@@ -224,19 +245,17 @@ class MatchDetail extends Component {
 
                                                     <tr class="row100 body">
                                                         <td class="cell100 column2">
-                                                            <Button variant="primary" onClick={() => this.setState({ smShow: true })}>
-                                                                Ver Foto
-                                                            </Button>
+                                                            <PhotoPlayer photo={playerA.photo} name={playerA.name + " " + playerA.lastName}/>
                                                         </td>
                                                         <td class="cell100 column3">{playerA.dni}</td>
                                                         <td class="cell100 column4">
                                                             <input id="goals" name="goals" type="number" min="0" pattern="^[0-9]+" value={playerA.goals} onChange={this.updateState.bind(this, "goals", index, "teamA")} />
                                                         </td>
                                                         <td class="cell100 column5">
-                                                            <input id="yellowCard" name="yellowCard" type="number" min="0" max="2" pattern="^[0-2]+" value={playerA.yellowCard} onChange={this.updateState.bind(this, "yellowCard", "teamA")} />
+                                                            <input id="yellowCard" name="yellowCard" type="number" min="0" max="2" pattern="^[0-2]+" value={playerA.yellowCard} onChange={this.updateState.bind(this, "yellowCard", index, "teamA")} />
                                                         </td>
                                                         <td class="cell100 column6">
-                                                            <input id="redCard" name="redCard" type="number" min="0" max="1" pattern="^[0-1]+" value={playerA.redCard} onChange={this.updateState.bind(this, "redCard", "teamA")} />
+                                                            <input id="redCard" name="redCard" type="number" min="0" max="1" pattern="^[0-1]+" value={playerA.redCard} onChange={this.updateState.bind(this, "redCard", index, "teamA")} />
                                                         </td>
                                                     </tr>
                                                 )}
@@ -288,19 +307,17 @@ class MatchDetail extends Component {
 
                                                     <tr class="row100 body">
                                                         <td class="cell100 column2">
-                                                            <Button variant="primary" onClick={() => this.setState({ smShow: true })}>
-                                                                Ver Foto
-                                                            </Button>
+                                                            <PhotoPlayer photo={playerB.photo} name={playerB.name + " " + playerB.lastName}/>
                                                         </td>
                                                         <td class="cell100 column3">{playerB.dni}</td>
                                                         <td class="cell100 column4">
-                                                            <input id="goals" name="goals" type="number" min="0" pattern="^[0-9]+" value={playerB.goals} onChange={this.updateState.bind(this, "goals", index, "playerB")} />
+                                                            <input id="goals" name="goals" type="number" min="0" pattern="^[0-9]+" value={playerB.goals} onChange={this.updateState.bind(this, "goals", index, "teamB")} />
                                                         </td>
                                                         <td class="cell100 column5">
-                                                            <input id="yellowCard" name="yellowCard" type="number" min="0" max="2" pattern="^[0-2]+" value={playerB.yellowCard} onChange={this.updateState.bind(this, "yellowCard", "playerB")} />
+                                                            <input id="yellowCard" name="yellowCard" type="number" min="0" max="2" pattern="^[0-2]+" value={playerB.yellowCard} onChange={this.updateState.bind(this, "yellowCard", index, "teamB")} />
                                                         </td>
                                                         <td class="cell100 column6">
-                                                            <input id="redCard" name="redCard" type="number" min="0" max="1" pattern="^[0-1]+" value={playerB.redCard} onChange={this.updateState.bind(this, "redCard", "playerB")} />
+                                                            <input id="redCard" name="redCard" type="number" min="0" max="1" pattern="^[0-1]+" value={playerB.redCard} onChange={this.updateState.bind(this, "redCard", index, "teamB")} />
                                                         </td>
                                                     </tr>
                                                 )}
