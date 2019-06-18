@@ -31,6 +31,8 @@ class MatchDetail extends Component {
             smShow: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleShow = this.handleShow.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
     componentWillMount() {
@@ -117,6 +119,14 @@ class MatchDetail extends Component {
         }
     };
 
+    handleClose() {
+        this.setState({ show: false });
+    }
+    
+    handleShow() {
+        this.setState({ show: true });
+    }
+
     handleSubmit(event) {
         event.preventDefault();
         const { match } = this.state;
@@ -136,7 +146,8 @@ class MatchDetail extends Component {
 
         axios.post('/api/matchUpdate/' + this.state.id, gameDTO)
             .then(function (response) {
-                window.location.reload();
+                //window.location.reload();
+                window.location.replace('/MatchesList'); 
             })
             .catch(error => { console.log(error.response) });
     }
@@ -201,9 +212,26 @@ class MatchDetail extends Component {
                     </div>
                 </div>
 
-                <Button variant="danger" className="buttonSaveMatch" onClick={this.handleSubmit}>
+                <Button variant="danger" className="buttonSaveMatch" onClick={this.handleShow}>
                     Guardar Resultado
                 </Button>
+
+                <Modal show={this.state.show} onHide={this.handleClose} aria-labelledby="example-modal-sizes-title-sm" centered="true">
+                    <Modal.Body>
+                        <b>Una vez enviada la informacion no podrá editar el resultado 
+                            del partido y/o las estadisticas de los jugadores. 
+                            ¿ Desea guardar la información ? </b>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.handleClose}>
+                            Volver
+                        </Button>
+                        <Button variant="success" onClick={this.handleSubmit}>
+                            Guardar
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                
 
                 <div class="limiter">
                     <div class="container-table100">

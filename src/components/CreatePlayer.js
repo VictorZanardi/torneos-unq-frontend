@@ -55,7 +55,7 @@ class CreatePlayer extends React.Component {
                 <IoIosAddCircle />
             </Button>
 
-            <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal show={this.state.show} onHide={this.handleClose}  centered="true">
                 <Modal.Header closeButton>
                     <Modal.Title>Crear Jugador</Modal.Title>
                 </Modal.Header>

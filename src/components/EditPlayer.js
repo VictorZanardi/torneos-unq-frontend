@@ -57,7 +57,7 @@ class EditPlayer extends React.Component {
                 <TiEdit />
             </Button>
 
-            <Modal show={this.state.show} onHide={this.handleClose} aria-labelledby="example-modal-sizes-title-sm">
+            <Modal show={this.state.show} onHide={this.handleClose} aria-labelledby="example-modal-sizes-title-sm"  centered="true">
                 <Modal.Header closeButton>
                     <Modal.Title>Editar A {this.state.player.lastName}</Modal.Title>
                 </Modal.Header>
