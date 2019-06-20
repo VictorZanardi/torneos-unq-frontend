@@ -43,6 +43,10 @@ class MatchesList extends React.Component {
                 )}
                 </ul>
             )
+        } else {
+            matchesHtml.push(
+                <h1> Todos los partidos ya fueron actualizados </h1>
+            )
         }
 
         return (
