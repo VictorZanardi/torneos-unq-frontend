@@ -50,7 +50,7 @@ class Header extends React.Component {
       li.push(
         <ul className="site-menu js-clone-nav d-none d-md-block">
           <li><a href="/">Inicio</a></li>
-          <li><a href="#">Noticias</a></li>
+          <li><a href="/Fixture">Fixture</a></li>
           <li><a href="/Championship">Torneos</a></li>  
           <li><a href="#">Partidos</a></li>
           <li><a href="/TeamsList">Equipos</a></li>

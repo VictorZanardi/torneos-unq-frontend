@@ -13,7 +13,7 @@ import EditChampionship from './components/EditChampionship';
 import TeamsChampionship from './components/TeamsChampionship';
 import Registration from './Registration';
 import Login from './Login';
-
+import Fixture from './components/Fixture';
 
 const routing = (
   <Router>
@@ -28,6 +28,7 @@ const routing = (
       <Route path="/EditChampionship/:id" component={EditChampionship} />
       <Route path="/TeamsChampionship" component={TeamsChampionship} />
       <Route path="/login" component={Login} />
+      <Route path="/Fixture" component={Fixture} />
     </div>
   </Router>
 )
