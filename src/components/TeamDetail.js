@@ -33,17 +33,27 @@ class TeamDetail extends Component {
       id: this.props.match.params.id,
       name: this.props.match.params.name,
       players: [],
-      smShow: false
+      smShow: false,
+      role: ""
     };
 
     this.defaultPhotoPlayer = this.defaultPhotoPlayer.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch('/api/teamBy/' + this.state.id)
       .then(response => response.json())
       .then(data => this.setState({ players: data }))
       .catch(error => { console.log(error.response) });
+
+      axios.get('/api/profileRole')
+        .then(response =>  {
+          console.log(response.data)
+          if(response.status == 200){
+            this.setState({ role: response.data });
+          }  
+        })
+        .catch(error => {console.log(error.response)});
   }
 
   getRestClient() {
@@ -107,7 +117,11 @@ class TeamDetail extends Component {
   render() {
 
     const { players } = this.state;
+    const { role } = this.state;
     let smClose = () => this.setState({ smShow: false });
+
+    console.log("ROLE"); 
+    console.log(role);
 
     return (
       <div>
@@ -131,7 +145,11 @@ class TeamDetail extends Component {
                       <Card.Title>{player.name}</Card.Title>
                       <Card.Title>{player.lastName}</Card.Title>
                       <Card.Title>{'DNI: ' + player.dni}</Card.Title>
-                      <label className="btn btn-warning">
+
+                      {
+                        role == "ADMIN" ? 
+                        <div>
+                        <label className="btn btn-warning">
                         <span>Cargar Foto</span>
                         <input style={{ display: "none" }} id="file" type="file" onChange={(evt) => this.handleUploadFile(evt, player.id)}></input>
                       </label>
@@ -150,8 +168,10 @@ class TeamDetail extends Component {
                           <Button variant="secondary" onClick={smClose}> NO </Button>
                           <Button variant="primary" onClick={this.delete.bind(this, player.id)}>SI</Button>
                         </Modal.Footer>
-                      </Modal>
-
+                      </Modal> </div>
+                        : <div></div>
+                      }
+                      
                     </Card.Body>
                   </blockquote>
                 </Card>

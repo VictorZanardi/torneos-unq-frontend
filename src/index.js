@@ -14,6 +14,8 @@ import TeamsChampionship from './components/TeamsChampionship';
 import Registration from './Registration';
 import Login from './Login';
 import Fixture from './components/Fixture';
+import MatchesList from './components/MatchesList';
+import MatchDetail from './components/MatchDetail';
 
 const routing = (
   <Router>
@@ -29,6 +31,8 @@ const routing = (
       <Route path="/TeamsChampionship" component={TeamsChampionship} />
       <Route path="/login" component={Login} />
       <Route path="/Fixture" component={Fixture} />
+      <Route path="/MatchesList" component={MatchesList} />
+      <Route path="/matchBy/:id/:teamAId/:teamBId" component={MatchDetail} />
     </div>
   </Router>
 )
