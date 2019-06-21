@@ -158,7 +158,6 @@ class MatchDetail extends Component {
         const { teamB } = this.state;
         const { match } = this.state;
         let smClose = () => this.setState({ smShow: false });
-        //console.log(teamA);
 
         return (
             <div>
@@ -279,10 +278,17 @@ class MatchDetail extends Component {
                                                             <input id="goals" name="goals" type="number" min="0" pattern="^[0-9]+" value={playerA.goals} onChange={this.updateState.bind(this, "goals", index, "teamA")} />
                                                         </td>
                                                         <td class="cell100 column5">
-                                                            <input id="yellowCard" name="yellowCard" type="number" min="0" max="2" pattern="^[0-2]+" value={playerA.yellowCard} onChange={this.updateState.bind(this, "yellowCard", index, "teamA")} />
+                                                            <select id="yellowCard" name="yellowCard" type="number" onChange={this.updateState.bind(this, "yellowCard", index, "teamA")}>
+                                                                <option value="0" selected>0</option> 
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                            </select>
                                                         </td>
                                                         <td class="cell100 column6">
-                                                            <input id="redCard" name="redCard" type="number" min="0" max="1" pattern="^[0-1]+" value={playerA.redCard} onChange={this.updateState.bind(this, "redCard", index, "teamA")} />
+                                                            <select id="redCard" name="redCard" type="number" onChange={this.updateState.bind(this, "redCard", index, "teamA")}>
+                                                                <option value="0" selected>0</option> 
+                                                                <option value="1">1</option>
+                                                            </select>
                                                         </td>
                                                     </tr>
                                                 )}
@@ -341,10 +347,17 @@ class MatchDetail extends Component {
                                                             <input id="goals" name="goals" type="number" min="0" pattern="^[0-9]+" value={playerB.goals} onChange={this.updateState.bind(this, "goals", index, "teamB")} />
                                                         </td>
                                                         <td class="cell100 column5">
-                                                            <input id="yellowCard" name="yellowCard" type="number" min="0" max="2" pattern="^[0-2]+" value={playerB.yellowCard} onChange={this.updateState.bind(this, "yellowCard", index, "teamB")} />
+                                                            <select id="yellowCard" name="yellowCard" type="number" onChange={this.updateState.bind(this, "yellowCard", index, "teamB")}>
+                                                                <option value="0" selected>0</option> 
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                            </select>
                                                         </td>
                                                         <td class="cell100 column6">
-                                                            <input id="redCard" name="redCard" type="number" min="0" max="1" pattern="^[0-1]+" value={playerB.redCard} onChange={this.updateState.bind(this, "redCard", index, "teamB")} />
+                                                            <select id="redCard" name="redCard" type="number" onChange={this.updateState.bind(this, "redCard", index, "teamB")}>
+                                                                <option value="0" selected>0</option> 
+                                                                <option value="1">1</option>
+                                                            </select>
                                                         </td>
                                                     </tr>
                                                 )}
