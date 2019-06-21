@@ -25,7 +25,8 @@ class LoadTeam extends React.Component {
   	onFormSubmit(e){
     	e.preventDefault() // Stop form submit
     	this.fileUpload(this.state.file).then((response)=>{
-      		alert("Carga Exitosa");
+			  alert("Carga Exitosa");
+			  window.location.reload();
     	})
   	}
   
