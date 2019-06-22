@@ -2,6 +2,9 @@ import Table from 'react-bootstrap/Table'
 import * as React from 'react';
 import Header from './Header';
 import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 class Fixture extends React.Component{
 
@@ -9,10 +12,10 @@ constructor(props) {
     super(props);
 
     this.state = {
-        fixture: [],
+        fixtures: [],
         };
     }
-
+    
     fixtureGenerate()
     {
       fetch('/api/fixtureGenerate')
@@ -24,27 +27,39 @@ constructor(props) {
 componentDidMount = () => {
     fetch('/api/fixture')
     .then(response => response.json())
-    .then(data => this.setState({fixture: data}))
+    .then(data => this.setState({fixtures: data}))
     .catch(error => {console.log(error.response)});
     }
 
 render(){
-    const {fixture} = this.state;
+  
+    const {fixtures} = this.state;
     var gamesHtml = [];
 
-    if (fixture.length > 0)
+    if (fixtures.length > 0)
     {
-      gamesHtml.push(fixture.map(game => (
+      gamesHtml.push(fixtures.map(fixture => (
         <tr>
-        <td>{game.matchweek}</td>
-        <td>{game.teamA.name}</td>
-        <td>{game.teamB.name}</td>
-        <td>{game.date}</td>
+        <th style={{textAlign:"center"}}>{fixture.matchDateNumber}</th>
+        <td style={{textAlign:"center",backgroundColor: "lightblue"}}>{fixture.games.map(game =>
+            <Form>
+            <Row>
+              <Col lg >
+                {game.teamA.name}
+              </Col>
+              -
+              <Col xs>
+                {game.teamB.name}
+              </Col>
+            </Row>
+          </Form>
+            // <span style={{alignContent:"center"}}> {game.teamA.name} - {game.teamB.name} <br></br></span>
+        )}</td>
         </tr>
       )) )
     }
     return(
-<div>
+  <div>
     <Header/>
     <br/>
     <br/>
@@ -53,13 +68,13 @@ render(){
          <Button variant="primary" onClick={this.fixtureGenerate}>Crear Fixture</Button>
     </div>
     <br/>
-    <Table striped bordered hover>
+    <Table striped bordered hover style={{margin: "auto",width: "600px",bordercollapse: "collapse",border: "1px solid #fff", /*for older IE*/
+	borderstyle: "hidden"}}>
         <thead>
             <tr>
-            <th>Fecha</th>
-            <th>Equipo 1</th>
-            <th>Equipo 2</th>
-            <th>Dia de Partido</th>
+            <th style={{textAlign:"center",backgroundColor: "lightblue"}}>Fecha</th>
+            <th style={{textAlign:"center"}}>Partidos</th>
+            <th style={{textAlign:"center"}}>Dia de Partido</th>
             </tr>
         </thead>
         <tbody>
