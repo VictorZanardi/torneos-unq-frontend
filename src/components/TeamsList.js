@@ -47,7 +47,7 @@ class TeamsList extends React.Component {
       )
     } else {
       teamsHtml.push(
-        <h1> El torneo actual no posee equipos cargados </h1>
+        <div></div>
       );
     }
 

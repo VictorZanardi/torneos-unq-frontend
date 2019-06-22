@@ -10,7 +10,7 @@ import './css/style.css';
 import quilmes from './images/quilmes.svg';
 import TablePositions from './components/TablePositions';
 import Matches from './components/Matches';
-import banner from './images/Banner.jpg'
+import banner from './images/banner.jpg'
 import Header from './components/Header';
 import Footer from './components/Footer';
 

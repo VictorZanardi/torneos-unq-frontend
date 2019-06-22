@@ -234,7 +234,7 @@ class MatchDetail extends Component {
 
                 <div class="limiter">
                     <div class="container-table100">
-                        <h1>{match.teamAName}</h1>
+                        <h1 className="h1 text-uppercase text-black font-weight-bold mb-3">{match.teamAName}</h1>
                         <div class="wrap-table100">
                             <div class="table100 ver1">
                                 <div class="table100-firstcol">
@@ -303,7 +303,7 @@ class MatchDetail extends Component {
 
                 <div class="limiter">
                     <div class="container-table100">
-                        <h1>{match.teamBName}</h1>
+                        <h1 className="h1 text-uppercase text-black font-weight-bold mb-3">{match.teamBName}</h1>
                         <div class="wrap-table100">
                             <div class="table100 ver1">
                                 <div class="table100-firstcol">

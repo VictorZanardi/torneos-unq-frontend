@@ -109,7 +109,7 @@ render() {
     );
   } else {
     championshipsHtml.push(
-      <h1> No se encontraron torneos, por favor genere uno</h1>
+      <div></div>
     );
   }
 
