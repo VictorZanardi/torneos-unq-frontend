@@ -131,7 +131,7 @@ class TeamDetail extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center mb-5">
-                <h1 className="text-black">{this.state.name}</h1>
+                <h1 className="h1 text-uppercase text-black font-weight-bold mb-3">{this.state.name}</h1>
               </div>
             </div>
 

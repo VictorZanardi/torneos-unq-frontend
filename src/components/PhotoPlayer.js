@@ -40,12 +40,14 @@ class PhotoPlayer extends Component {
                 Ver Foto
             </Button>
 
-            <Modal size="lg" show={this.state.show} onHide={this.handleClose} aria-labelledby="example-modal-sizes-title-sm">
+            <Modal size="sm" show={this.state.show} onHide={this.handleClose} aria-labelledby="example-modal-sizes-title-sm">
             <Modal.Header closeButton>
                     <Modal.Title>{this.props.name}</Modal.Title>
                 </Modal.Header>
-            <Modal.Body>  
-                <img src={this.defaultPhotoPlayer(this.props.photo)} />
+            <Modal.Body>
+            <Card> 
+                <Card.Img variant="top" src={this.defaultPhotoPlayer(this.props.photo)} />
+            </Card>
             </Modal.Body>
         </Modal>
         </>

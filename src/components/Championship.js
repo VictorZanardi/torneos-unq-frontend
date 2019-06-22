@@ -64,6 +64,54 @@ render() {
   const classes = this.props;
   const {championships} = this.state;
   let smClose = () => this.setState({ smShow: false });
+  var championshipsHtml = [];
+
+  if(championships.length > 0){
+    championshipsHtml.push(
+      championships.map(championship => (
+        <StyledTableRow key={championship.name}>
+          <StyledTableCell  component="th" scope="row" align="center">
+            {championship.name}
+          </StyledTableCell>
+          <StyledTableCell align="center">{championship.description}</StyledTableCell>
+          <StyledTableCell align="center">
+            <Moment format="DD/MM/YYYY">
+            {championship.startDate}
+           </Moment>
+          </StyledTableCell>
+          <StyledTableCell align="center">
+            <Moment format="DD/MM/YYYY">
+            {championship.finishDate}
+           </Moment>
+          </StyledTableCell>              
+          <StyledTableCell align="center">
+          <Link to= {"/EditChampionship/" + championship.id}>
+          <Button variant="info">
+            <TiEdit />
+          </Button>
+          </Link>
+        <span> </span>
+          <Button variant="danger" onClick={() => this.setState({ smShow: true })}>
+                    <TiDelete />
+            </Button>
+          </StyledTableCell>
+              <Modal centered="true" class="modal-dialog modal-sm" show={this.state.smShow} onHide={smClose} aria-labelledby="example-modal-sizes-title-sm">
+                    <Modal.Body>
+                      ¿Esta seguro de eliminar el torneo?
+                      </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={smClose}> No </Button>
+                      <Button variant="danger" onClick={this.deleteChampionship.bind(this, championship.id)}>Si</Button>
+                    </Modal.Footer>
+              </Modal>
+        </StyledTableRow>
+      ))
+    );
+  } else {
+    championshipsHtml.push(
+      <div></div>
+    );
+  }
 
     return (
   <div>
@@ -85,44 +133,7 @@ render() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {championships.map(championship => (
-            <StyledTableRow key={championship.name}>
-              <StyledTableCell  component="th" scope="row" align="center">
-                {championship.name}
-              </StyledTableCell>
-              <StyledTableCell align="center">{championship.description}</StyledTableCell>
-              <StyledTableCell align="center">
-                <Moment format="DD/MM/YYYY">
-                {championship.startDate}
-               </Moment>
-              </StyledTableCell>
-              <StyledTableCell align="center">
-                <Moment format="DD/MM/YYYY">
-                {championship.finishDate}
-               </Moment>
-              </StyledTableCell>              
-              <StyledTableCell align="center">
-              <Link to= {"/EditChampionship/" + championship.id}>
-              <Button variant="info">
-                <TiEdit />
-              </Button>
-              </Link>
-            <span> </span>
-              <Button variant="danger" onClick={() => this.setState({ smShow: true })}>
-                        <TiDelete />
-                </Button>
-              </StyledTableCell>
-                  <Modal centered="true" class="modal-dialog modal-sm" show={this.state.smShow} onHide={smClose} aria-labelledby="example-modal-sizes-title-sm">
-                        <Modal.Body>
-                          ¿Esta seguro de eliminar el torneo?
-                          </Modal.Body>
-                        <Modal.Footer>
-                          <Button variant="secondary" onClick={smClose}> No </Button>
-                          <Button variant="danger" onClick={this.deleteChampionship.bind(this, championship.id)}>Si</Button>
-                        </Modal.Footer>
-                  </Modal>
-            </StyledTableRow>
-          ))}
+          {championshipsHtml}
         </TableBody>
       </Table>
     </Paper>

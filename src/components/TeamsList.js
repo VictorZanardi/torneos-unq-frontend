@@ -47,7 +47,7 @@ class TeamsList extends React.Component {
       )
     } else {
       teamsHtml.push(
-        <h1> El torneo actual no posee equipos cargados </h1>
+        <div></div>
       );
     }
 
@@ -57,13 +57,10 @@ class TeamsList extends React.Component {
 
         <div className="site-section">
           <div className="container">
-            <h2 className="text-black">Equipos</h2>
+            <h2 className="h6 text-uppercase text-black font-weight-bold mb-3">Equipos</h2>
             <div className="row text-center">
-
               {teamsHtml}
-
             </div>
-
           </div>
         </div>
         <Footer />
