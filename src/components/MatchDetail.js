@@ -122,7 +122,7 @@ class MatchDetail extends Component {
     handleClose() {
         this.setState({ show: false });
     }
-    
+
     handleShow() {
         this.setState({ show: true });
     }
@@ -144,10 +144,12 @@ class MatchDetail extends Component {
             statisticPlayer: statistic
         };
 
+        console.log(gameDTO);
+
         axios.post('/api/matchUpdate/' + this.state.id, gameDTO)
             .then(function (response) {
                 //window.location.reload();
-                window.location.replace('/MatchesList'); 
+                window.location.replace('/MatchesList');
             })
             .catch(error => { console.log(error.response) });
     }
@@ -217,8 +219,8 @@ class MatchDetail extends Component {
 
                 <Modal show={this.state.show} onHide={this.handleClose} aria-labelledby="example-modal-sizes-title-sm" centered="true">
                     <Modal.Body>
-                        <b>Una vez enviada la informacion no podrá editar el resultado 
-                            del partido y/o las estadisticas de los jugadores. 
+                        <b>Una vez enviada la informacion no podrá editar el resultado
+                            del partido y/o las estadisticas de los jugadores.
                             ¿ Desea guardar la información ? </b>
                     </Modal.Body>
                     <Modal.Footer>
@@ -230,7 +232,7 @@ class MatchDetail extends Component {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-                
+
 
                 <div class="limiter">
                     <div class="container-table100">
@@ -247,7 +249,10 @@ class MatchDetail extends Component {
                                         <tbody>
                                             {teamA.map((playerA, index) =>
                                                 <tr class="row100 body">
-                                                    <td class="cell100 column1"> <input type="text" value={playerA.name + " " + playerA.lastName} readonly="readonly" /></td>
+                                                    <td class="cell100 column1">
+                                                        {playerA.name + " " + playerA.lastName + " "}
+                                                        <PhotoPlayer photo={playerA.photo} name={playerA.name + " " + playerA.lastName} />
+                                                    </td>
                                                 </tr>
                                             )}
                                         </tbody>
@@ -258,11 +263,10 @@ class MatchDetail extends Component {
                                         <table>
                                             <thead>
                                                 <tr class="row100 head">
-                                                    <th class="cell100 column2">Foto</th>
-                                                    <th class="cell100 column3">DNI</th>
-                                                    <th class="cell100 column4">Goles</th>
-                                                    <th class="cell100 column5">Tarjeta Amarilla</th>
-                                                    <th class="cell100 column6">Tarjeta Roja</th>
+                                                    <th class="cell100 column2">DNI</th>
+                                                    <th class="cell100 column3">Goles</th>
+                                                    <th class="cell100 column4">Tarjeta Amarilla</th>
+                                                    <th class="cell100 column5">Tarjeta Roja</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -270,23 +274,20 @@ class MatchDetail extends Component {
                                                 {teamA.map((playerA, index) =>
 
                                                     <tr class="row100 body">
-                                                        <td class="cell100 column2">
-                                                            <PhotoPlayer photo={playerA.photo} name={playerA.name + " " + playerA.lastName} />
-                                                        </td>
-                                                        <td class="cell100 column3">{playerA.dni}</td>
-                                                        <td class="cell100 column4">
+                                                        <td class="cell100 column2">{playerA.dni.toLocaleString('de-DE', { style: 'decimal', decimal: '3' })}</td>
+                                                        <td class="cell100 column3">
                                                             <input id="goals" name="goals" type="number" min="0" pattern="^[0-9]+" value={playerA.goals} onChange={this.updateState.bind(this, "goals", index, "teamA")} />
                                                         </td>
-                                                        <td class="cell100 column5">
+                                                        <td class="cell100 column4">
                                                             <select id="yellowCard" name="yellowCard" type="number" onChange={this.updateState.bind(this, "yellowCard", index, "teamA")}>
-                                                                <option value="0" selected>0</option> 
+                                                                <option value="0" selected>0</option>
                                                                 <option value="1">1</option>
                                                                 <option value="2">2</option>
                                                             </select>
                                                         </td>
-                                                        <td class="cell100 column6">
+                                                        <td class="cell100 column5">
                                                             <select id="redCard" name="redCard" type="number" onChange={this.updateState.bind(this, "redCard", index, "teamA")}>
-                                                                <option value="0" selected>0</option> 
+                                                                <option value="0" selected>0</option>
                                                                 <option value="1">1</option>
                                                             </select>
                                                         </td>
@@ -316,7 +317,10 @@ class MatchDetail extends Component {
                                         <tbody>
                                             {teamB.map((playerB) =>
                                                 <tr class="row100 body">
-                                                    <td class="cell100 column1"> <input type="text" value={playerB.name + " " + playerB.lastName} readonly="readonly" /></td>
+                                                    <td class="cell100 column1">
+                                                        {playerB.name + " " + playerB.lastName + " "}
+                                                        <PhotoPlayer photo={playerB.photo} name={playerB.name + " " + playerB.lastName} />
+                                                    </td>
                                                 </tr>
                                             )}
                                         </tbody>
@@ -327,11 +331,10 @@ class MatchDetail extends Component {
                                         <table>
                                             <thead>
                                                 <tr class="row100 head">
-                                                    <th class="cell100 column2">Foto</th>
-                                                    <th class="cell100 column3">DNI</th>
-                                                    <th class="cell100 column4">Goles</th>
-                                                    <th class="cell100 column5">Tarjeta Amarilla</th>
-                                                    <th class="cell100 column6">Tarjeta Roja</th>
+                                                    <th class="cell100 column2">DNI</th>
+                                                    <th class="cell100 column3">Goles</th>
+                                                    <th class="cell100 column4">Tarjeta Amarilla</th>
+                                                    <th class="cell100 column5">Tarjeta Roja</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -339,23 +342,20 @@ class MatchDetail extends Component {
                                                 {teamB.map((playerB, index) =>
 
                                                     <tr class="row100 body">
-                                                        <td class="cell100 column2">
-                                                            <PhotoPlayer photo={playerB.photo} name={playerB.name + " " + playerB.lastName} />
-                                                        </td>
-                                                        <td class="cell100 column3">{playerB.dni}</td>
-                                                        <td class="cell100 column4">
+                                                        <td class="cell100 column2">{playerB.dni.toLocaleString('de-DE', { style: 'decimal', decimal: '3' })}</td>
+                                                        <td class="cell100 column3">
                                                             <input id="goals" name="goals" type="number" min="0" pattern="^[0-9]+" value={playerB.goals} onChange={this.updateState.bind(this, "goals", index, "teamB")} />
                                                         </td>
-                                                        <td class="cell100 column5">
+                                                        <td class="cell100 column4">
                                                             <select id="yellowCard" name="yellowCard" type="number" onChange={this.updateState.bind(this, "yellowCard", index, "teamB")}>
-                                                                <option value="0" selected>0</option> 
+                                                                <option value="0" selected>0</option>
                                                                 <option value="1">1</option>
                                                                 <option value="2">2</option>
                                                             </select>
                                                         </td>
-                                                        <td class="cell100 column6">
+                                                        <td class="cell100 column5">
                                                             <select id="redCard" name="redCard" type="number" onChange={this.updateState.bind(this, "redCard", index, "teamB")}>
-                                                                <option value="0" selected>0</option> 
+                                                                <option value="0" selected>0</option>
                                                                 <option value="1">1</option>
                                                             </select>
                                                         </td>

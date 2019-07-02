@@ -187,38 +187,32 @@ th, td {
 }
 
 .column1 {
-  width: 100%;
+  width: 80%;
   padding-left: 40px;
+  height: 86px; 
 }
 
 .column2 {
-  width: 225px;
-  padding-left: 55px;
+  width: 1%;
+  height: 86px;
 }
 
 .column3 {
-  width: 205px;
+  width: 1%;
+  height: 86px; 
 }
 
 .column4 {
-  width: 195px;
+  width: 1%;
+  height: 86px; 
 }
 
 .column5 {
-  width: 235px;
+  width: 1%;
+  height: 86px; 
 }
 
-.column6 {
-  width: 170px;
-}
 
-.column7 {
-  width: 330px;
-}
-
-.column8 {
-  width: 305px;
-}
 
 .table100 th {
   padding-top: 21px;
