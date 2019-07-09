@@ -1,47 +1,23 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
+import React from 'react';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
-import Slide from '@material-ui/core/Slide';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import Header from './Header';
 import { SnackbarContent } from '@material-ui/core';
 import ErrorIcon from '@material-ui/icons/Error';
 import Snackbar from '@material-ui/core/Snackbar';
-
-const styles = {
-  appBar: {
-    position: 'relative',
-  },
-  flex: {
-    flex: 1,
-  },
-  textField: {
-      height: 800
-  },
-};
-
-function Transition(props) {
-  return <Slide direction="up" {...props} />;
-}
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 class NewChampionship extends React.Component {
   
 constructor(props) { 
   super(props);
   this.state = {
-    open: true,
+    open: false,
+    show: false,
     openErrorModal: false,
     nameError:'',
     descriptionError:'',
@@ -92,6 +68,14 @@ handleSubmit(event){
     this.setState({ openErrorModal: false });
   };
 
+  handleShow = () =>{
+    this.setState({ show: true });
+  }
+
+  handleCloseWindow = () =>{
+    this.setState({ show: false });
+  }
+
   redirect = () => {
     return <Redirect to='./Championship' />
   };
@@ -114,16 +98,11 @@ handleSubmit(event){
   }
 
   render() {
-    const { classes } = this.props;
     return (
-      <div className="newChampionship">
-        <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          TransitionComponent={Transition}
-          fullScreen
-        >
-        <Header/>
+      <>
+      <Button style={{marginLeft:"10px",marginRight:"10px"}} variant="primary" onClick={this.handleShow}>
+          Crear Torneo         
+      </Button>
       <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
@@ -140,31 +119,16 @@ handleSubmit(event){
           style={{backgroundColor: "red"}}
         />
       </Snackbar>
-          <AppBar className={classes.appBar} style={{backgroundColor:"#d50000",marginTop:"30px"}} >
-            <Toolbar>
-            <Link to={"./Championship"} style={{color:"inherit"}}>            
-              <IconButton color="inherit"  aria-label="Close">
-              <CloseIcon/>
-              </IconButton>
-              </Link>
-              <Typography variant="h6" color="inherit" className={classes.flex}>
-                Crear Torneo
-              </Typography>
-              <Button color="inherit" onClick={this.handleSubmit}>
-                Guardar
-              </Button>
-            </Toolbar>
-          </AppBar>
+      <Modal style={{top:"130px"}} show={this.state.show} onHide={this.handleCloseWindow} aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">Crear torneo</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <List>
            <ListItem >
               <input
                 label="Nombre"
                 placeholder="Ingrese un nombre para el torneo"
-                // className={classes.input}
-                inputProps={{
-                  'aria-label': 'Description',
-                }}
-                fullWidth
                 onChange={this.updateState.bind(this,'name')}
                 value={this.state.championship.name}
                 onBlur={this.validateForm}
@@ -177,11 +141,6 @@ handleSubmit(event){
               <input
                 label="Descripción"
                 placeholder="Ingrese una descripción"
-                // className={classes.input}
-                inputProps={{
-                  'aria-label': 'Description',
-                }}
-                fullWidth
                 onChange={this.updateState.bind(this,'description')}
                 value={this.state.championship.description}
                 onBlur={this.validateForm}
@@ -190,6 +149,7 @@ handleSubmit(event){
             </ListItem>
             <ListItem className='invalid-feedback' style={{marginTop:"-10px"}}>{this.state.descriptionError}</ListItem >
             <Divider />
+            <br/>
             <ListItemText >
             <label htmlFor="startDate">Fecha Inicio</label>
             <input
@@ -203,6 +163,7 @@ handleSubmit(event){
             </ListItemText>
             <ListItem className='invalid-feedback' style={{marginTop:"-10px"}}>{this.state.startDateError}</ListItem >
             <Divider />
+            <br/>
             <ListItemText>
             <label htmlFor="finishDate">Fecha Finalizacion</label>
             <input
@@ -217,14 +178,19 @@ handleSubmit(event){
             </ListItemText>
             <ListItem className='invalid-feedback' style={{marginTop:"-10px"}}>{this.state.finishDateError}</ListItem >
           </List>
-        </Dialog>
-      </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleCloseWindow}>
+                      Salir
+            </Button>
+            <Button variant="primary" onClick={this.handleSubmit}>
+                Guardar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
     );
   }
 }
 
-NewChampionship.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(NewChampionship);
+export default NewChampionship;

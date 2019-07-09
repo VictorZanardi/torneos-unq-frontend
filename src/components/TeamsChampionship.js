@@ -1,16 +1,13 @@
 import * as React from 'react';
-import { makeStyles,withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Button from '@material-ui/core/Button';
+import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 import { SnackbarContent } from '@material-ui/core';
 import ErrorIcon from '@material-ui/icons/Error';
 import Snackbar from '@material-ui/core/Snackbar';
+import Modal from 'react-bootstrap/Modal'
+import '../css/checkbox.css';
+import '../css/style.css';
 
 const useStyles = ({
   root: {
@@ -21,8 +18,6 @@ const useStyles = ({
   },
 });
 
-
-
 class TeamsChampionship extends React.Component {
 
   constructor(props) {
@@ -30,8 +25,11 @@ class TeamsChampionship extends React.Component {
 
     this.state = {
       teams: [],
-      message: ''
+      message: '',
+      show: false
     };
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);  
   }
   
   componentDidMount() {
@@ -99,6 +97,14 @@ class TeamsChampionship extends React.Component {
     this.setState({ open: false });
   };
 
+  handleCloseWindow = () => {
+    this.setState({ show: false });
+}
+
+  handleShow() {
+    this.setState({ show: true });
+  }
+
   handleCloseModal = () => {
     this.setState({ openErrorModal: false });
   };
@@ -109,30 +115,16 @@ class TeamsChampionship extends React.Component {
 
   render() {
 
-    const StyledTableCell = withStyles(theme => ({
-      head: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
-        fontSize: 26,
-      },
-      body: {
-        fontSize: 14,
-      },
-    }))(TableCell);
-    
-    const StyledTableRow = withStyles(theme => ({
-      root: {
-        '&:nth-of-type(odd)': {
-          backgroundColor: theme.palette.background.default,
-        },
-      },
-    }))(TableRow);
-
     const {teams,message} = this.state;
 
     return (
-      <div>
-      <Snackbar
+      <>
+         <Button style={{marginLeft:"10px"}} variant="primary" onClick={this.handleShow}>
+           Agregar Equipos
+         </Button>
+
+      <Modal show={this.state.show} onHide={this.handleCloseWindow} aria-labelledby="contained-modal-title-vcenter" centered>
+        <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
@@ -147,36 +139,38 @@ class TeamsChampionship extends React.Component {
           style={{backgroundColor: "red"}}
         />
       </Snackbar>
-      <React.Fragment>
-          <Table >
-        <TableHead>
-          <TableRow>
-            <StyledTableCell align="center">Agregar equipos al torneo</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-        <input type="checkbox" onClick={this.handleAllChecked}  value="checkedall" /> Seleccionar Todo
-        {
-          teams.map(team => (
-                 <label>
-                 <input type="checkbox" key={team.id} id= {team.id} name={team.name} onClick={this.handleCheckChieldElement} checked={team.isChecked} value={team.value}/>
-                 {team.name}
-               </label>
-          ))
-        }
-        </TableBody>
-      </Table>
-      <br/>
-       <Button variant="contained" color="primary" onClick={this.handleSubmit} style={{marginRight: 10}}> 
-          Guardar
-        </Button>
-        <Link to={"./Championship"}>
-        <Button variant="contained" color="secondary" >
-          Volver
-        </Button>  
-        </Link>
-      </React.Fragment>
-      </div>
+          <Modal.Header closeButton>
+            <Modal.Title>Agregar equipos al torneo</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+              <label>Seleccionar Todos los Equipos</label>
+            <div class="checkboxOne">
+              <input class="invisible" id="checkboxOneInput" type="checkbox" onClick={this.handleAllChecked}  value="checkedall"/>
+              <label for="checkboxOneInput"></label>
+            </div>
+          <br/> 
+            {
+              teams.map(team => (
+                <div class="checkboxChild">
+                  <span class="paragraph1">{team.name}</span>
+                  <input class="invisible" type="checkbox" key={team.id} id= {team.id} name={team.name} onClick={this.handleCheckChieldElement} checked={team.isChecked} value={team.value}/>
+                  <label for={team.id}></label>
+                </div>
+              ))
+            }
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleCloseWindow}>
+                      Salir
+            </Button>
+            <Button variant="primary" onClick={this.handleSubmit}>
+                Guardar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
     );
   }
 }

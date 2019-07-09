@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import {Link} from 'react-router-dom';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,11 +9,13 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Moment from 'react-moment';
-import { TiEdit } from "react-icons/ti";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { TiDelete } from "react-icons/ti";
 import axios from 'axios';
+import TeamsChampionship from './TeamsChampionship';
+import NewChampionship from './NewChampionship';
+import EditChampionship from './EditChampionship';
 
 class Championship extends React.Component {
 
@@ -85,11 +86,7 @@ render() {
            </Moment>
           </StyledTableCell>              
           <StyledTableCell align="center">
-          <Link to= {"/EditChampionship/" + championship.id}>
-          <Button variant="info">
-            <TiEdit />
-          </Button>
-          </Link>
+         <EditChampionship id={championship.id}/>
         <span> </span>
           <Button variant="danger" onClick={() => this.setState({ smShow: true })}>
                     <TiDelete />
@@ -117,19 +114,19 @@ render() {
   <div>
     <Header/>
     <div className="site-section">
-      <div  style={{marginLeft:10}}>
-        <Link to= {"/NewChampionship"} id="NewChampionship" className="btn btn-primary"  style={{marginRight:10}}>Crear Torneo</Link>
-        <Link to= {"/TeamsChampionship"} className="btn btn-primary">Agregar Equipos</Link>      
+      <div>
+        <NewChampionship/>
+        <TeamsChampionship/>
       </div> <br/>
-      <Paper className={classes.root}>
-      <Table className={classes.table}>
+      <Paper style={{marginRight:"20px"}}>
+      <Table style={{marginLeft:"10px"}}>
         <TableHead>
           <TableRow>
             <StyledTableCell align="center">Nombre</StyledTableCell>
             <StyledTableCell align="center">Descripcion</StyledTableCell>
             <StyledTableCell align="center">Fecha de Inicio</StyledTableCell>
             <StyledTableCell align="center">Fecha de Fin</StyledTableCell>
-            <StyledTableCell align="center"></StyledTableCell>
+            <StyledTableCell align="center">Acciones</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

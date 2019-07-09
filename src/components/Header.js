@@ -28,12 +28,12 @@ class Header extends React.Component {
     axios.post('/api/logout')
       .then(function (response) {
         console.log(response);
-        alert("Secion cerrada");
+        alert("Sesion cerrada");
         window.location.href = "/";
       })
       .catch(error => {
         console.log(error.response);
-        alert("Secion cerrada");
+        alert("Sesion cerrada");
         window.location.href = "/";
       });
   }
@@ -99,7 +99,7 @@ class Header extends React.Component {
             <div className="site-mobile-menu-body" />
           </div>
         </div>
-        <header className="site-navbar absolute transparent" role="banner">
+        <header className="site-navbar relative transparent" role="banner">
           <div className="py-3">
             <div className="container">
               <div className="row align-items-center">

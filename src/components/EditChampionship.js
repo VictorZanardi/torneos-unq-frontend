@@ -1,25 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
-import Header from './Header';
 import { SnackbarContent } from '@material-ui/core';
 import ErrorIcon from '@material-ui/icons/Error';
 import Snackbar from '@material-ui/core/Snackbar';
-
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import { TiEdit } from "react-icons/ti";
 
 const styles = {
   appBar: {
@@ -43,8 +37,9 @@ constructor(props) {
   super(props);
   this.state = {
     open: true,
+    show: false,
     championship: {},
-      id: this.props.match.params.id,
+      id: this.props.id,
       openErrorModal: false,
       nameError:null,
       descriptionError:null,
@@ -90,6 +85,14 @@ handleSubmit(event){
     this.setState({ openErrorModal: false });
   };
 
+  handleShow = () =>{
+    this.setState({ show: true });
+  }
+
+  handleCloseWindow = () =>{
+    this.setState({ show: false });
+  }
+
   redirect = () => {
     return <Redirect to='./Championship' />
   };
@@ -113,14 +116,10 @@ handleSubmit(event){
   render() {
     const { classes } = this.props;
     return (
-      <div className="editChampionship">
-        <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          TransitionComponent={Transition}
-          fullScreen
-        >
-        <Header/>
+      <>
+        <Button variant="info" onClick={this.handleShow}>
+            <TiEdit />
+          </Button>
       <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
@@ -137,21 +136,11 @@ handleSubmit(event){
           style={{backgroundColor: "red"}}
         />
       </Snackbar>
-          <AppBar className={classes.appBar} style={{backgroundColor:"#d50000",marginTop:"30px"}} >
-            <Toolbar>
-            <Link to={"../Championship"} style={{color:"inherit"}}>            
-              <IconButton color="inherit"  aria-label="Close">
-              <CloseIcon/>
-              </IconButton>
-              </Link>
-              <Typography variant="h6" color="inherit" className={classes.flex}>
-                Editar Torneo
-              </Typography>
-              <Button color="inherit" onClick={this.handleSubmit}>
-                Guardar
-              </Button>
-            </Toolbar>
-          </AppBar>
+      <Modal style={{top: "30px"}} show={this.state.show} onHide={this.handleCloseWindow} aria-labelledby="example-modal-sizes-title-sm" centered>
+        <Modal.Header closeButton>
+            <Modal.Title>Editar torneo</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <List>
            <ListItem >
               <input
@@ -213,8 +202,17 @@ handleSubmit(event){
             </ListItemText>
             <ListItem className='invalid-feedback' style={{marginTop:"-10px"}}>{this.state.finishDateError}</ListItem >
           </List>
-        </Dialog>
-      </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleCloseWindow}>
+                      Salir
+            </Button>
+            <Button variant="primary" onClick={this.handleSubmit}>
+                Guardar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
     );
   }
 }
