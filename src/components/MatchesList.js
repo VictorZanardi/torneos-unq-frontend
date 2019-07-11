@@ -16,7 +16,8 @@ class MatchesList extends React.Component {
         super(props);
 
         this.state = {
-            matches: []
+            matches: [],
+            matchWeek: 0
         };
     }
 
@@ -25,15 +26,23 @@ class MatchesList extends React.Component {
             .then(response => response.json())
             .then(data => this.setState({ matches: data }))
             .catch(error => { console.log(error.response) });
+
+        fetch('/api/currentMatchWeek')
+            .then(response => response.json())
+            .then(data =>
+                this.setState({ matchWeek: data }))
+            .catch(error => { console.log(error.response) });
     }
 
     render() {
 
         const { matches } = this.state;
+        const { matchWeek } = this.state;
         var matchesHtml = []
-        if (matches.length > 0) {
+        /* TRAER LA CANTIDAD DE FECHAS TOTALES */
+        for (var i = 1; i <= 3; i++) {
             matchesHtml.push(
-                <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                /*<div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <div className="row align-items-center">
                         <div className="col-md-12">
                             {matches.map((match, index) => {
@@ -72,12 +81,50 @@ class MatchesList extends React.Component {
                             })}
                         </div>
                     </div>
+                </div>*/
+                <div>
+                    <h9 className="h9 text-uppercase text-black font-weight-bold mb-3"> {"Fecha " + i} </h9>
+                    <div className="row align-items-center">
+                        <div className="col-md-12">
+                            {matches.map((match, index) => {
+
+                                return match.matchweek == i ?
+                                    <div className="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
+                                        <div className="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                                            <div className="text-center text-lg-left">
+                                                <div className="d-block d-lg-flex align-items-center">
+
+                                                    <div className="text">
+                                                        <h3 className="h5 mb-0 text-black">{match.teamA.name}</h3>
+                                                        <span className="text-uppercase small country">Argentina</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
+                                            <div className="d-inline-block">
+                                                <Link to={"/matchBy/" + match.id + "/" + match.teamA.id + "/" + + match.teamB.id} className="btn btn-primary">Gestionar</Link>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-4 col-lg-4 text-center text-lg-right">
+                                            <div className>
+                                                <div className="d-block d-lg-flex align-items-center">
+
+                                                    <div className="text order-1 w-100">
+                                                        <h3 className="h5 mb-0 text-black">{match.teamB.name}</h3>
+                                                        <span className="text-uppercase small country">Argentina</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    : <div></div>
+                            })}
+                        </div>
+                    </div>
+                    <br></br>
                 </div>
-            )
-        } else {
-            matchesHtml.push(
-                <div></div>
-            )
+            );
         }
 
         return (
@@ -85,7 +132,7 @@ class MatchesList extends React.Component {
                 <Header />
                 <div className="site-section">
                     <div className="container">
-                        <h2 className="h6 text-uppercase text-black font-weight-bold mb-3">Partidos Pendientes</h2>
+                        <h5 className="h5 text-uppercase text-black font-weight-bold mb-3">Partidos Pendientes</h5>
                         <div className="tab-content" id="pills-tabContent">
                             {matchesHtml}
                         </div>
