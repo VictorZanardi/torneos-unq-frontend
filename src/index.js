@@ -16,6 +16,7 @@ import Login from './Login';
 import Fixture from './components/Fixture';
 import MatchesList from './components/MatchesList';
 import MatchDetail from './components/MatchDetail';
+import Statistic from './components/Statistic';
 
 const routing = (
   <Router>
@@ -33,6 +34,7 @@ const routing = (
       <Route path="/Fixture" component={Fixture} />
       <Route path="/MatchesList" component={MatchesList} />
       <Route path="/matchBy/:id/:teamAId/:teamBId" component={MatchDetail} />
+      <Route path="/Statistic" component={Statistic} />
     </div>
   </Router>
 )

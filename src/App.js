@@ -13,6 +13,7 @@ import Matches from './components/Matches';
 import banner from './images/banner.jpg'
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Rules from './components/Rules';
 
 class App extends React.Component {
   render() {
@@ -27,10 +28,7 @@ class App extends React.Component {
               <img id="Fondo-Portada" className="rounded" src={banner} />
             </div>
             <br />
-
-            <h2 className="h6 text-uppercase text-black font-weight-bold mb-3">Tabla de Posiciones</h2>
-            <TablePositions />
-            <Matches />
+            <Rules />
           </div>
         </div>
         <Footer />

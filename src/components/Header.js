@@ -50,6 +50,7 @@ class Header extends React.Component {
       li.push(
         <ul className="site-menu js-clone-nav d-none d-md-block">
           <li><a href="/">Inicio</a></li>
+          <li><a href="/Statistic">Estadisticas</a></li>
           <li><a href="/Fixture">Fixture</a></li>
           <li><a href="/Championship">Torneos</a></li>
           <li><a href="/MatchesList">Partidos</a></li>
@@ -62,9 +63,8 @@ class Header extends React.Component {
       li.push(
         <ul className="site-menu js-clone-nav d-none d-md-block">
           <li><a href="/">Inicio</a></li>
-          <li><a href="/MatchesList">Partidos</a></li>
+          <li><a href="/Statistic">Estadisticas</a></li>
           <li><a href="/login">Login</a></li>
-          <li><a href="/registration">Registrarse</a></li>
         </ul>
       );
     }
