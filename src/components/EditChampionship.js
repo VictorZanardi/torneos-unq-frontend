@@ -136,7 +136,7 @@ handleSubmit(event){
           style={{backgroundColor: "red"}}
         />
       </Snackbar>
-      <Modal style={{top: "30px"}} show={this.state.show} onHide={this.handleCloseWindow} aria-labelledby="example-modal-sizes-title-sm" centered>
+      <Modal style={{top: "100px"}} show={this.state.show} onHide={this.handleCloseWindow} aria-labelledby="example-modal-sizes-title-sm" centered>
         <Modal.Header closeButton>
             <Modal.Title>Editar torneo</Modal.Title>
         </Modal.Header>

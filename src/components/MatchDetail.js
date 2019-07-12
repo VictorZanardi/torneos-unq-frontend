@@ -13,8 +13,6 @@ import Header from './Header';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import defaultPhoto from '../images/playerDefault.png';
 import PhotoPlayer from './PhotoPlayer.js';
 
 class MatchDetail extends Component {
