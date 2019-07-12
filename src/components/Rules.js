@@ -4,6 +4,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './Rules.css';
+import reglamento from '../images/reglamento.jpg';
 
 class Rules extends React.Component {
 
@@ -21,16 +22,16 @@ class Rules extends React.Component {
         return (
 
             <Jumbotron className="containerj">
-                <h1>Reglamento del Torneo</h1>
                 <br></br>
-                <h6>
-                    Presionar el boton para ver el reglamento del torneo actual.
-                </h6>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
                 <br></br>
                 <p>
-                    <Button variant="light" size="lg" onClick={() => this.setState({ lgShow: true })}>
-                        Ver
-                    </Button>
+                    <button type="button" id="buttonVer" class="btn btn-light btn-lg" onClick={() => this.setState({ lgShow: true })}>Ver</button>
                 </p>
 
                 <Modal
