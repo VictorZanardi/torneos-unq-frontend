@@ -9,6 +9,7 @@ import '../css/style.css';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import './TeamsList.css';
 
 class TeamsList extends React.Component {
 
@@ -30,9 +31,10 @@ class TeamsList extends React.Component {
   render() {
 
     const { teams } = this.state;
-    var teamsHtml = []
+    var teamsHtml = [];
+
     if (teams.length > 0) {
-      teamsHtml.push(
+      /*teamsHtml.push(
         teams.map((team) =>
 
           <div className="row">
@@ -43,6 +45,15 @@ class TeamsList extends React.Component {
               <Link to={"/teamsBy/" + team.id + "/" + team.name} className="btn btn-primary">Ver plantilla</Link>
             </div>
           </div>
+        )
+      )*/
+
+      teamsHtml.push(
+        teams.map((team) =>
+
+
+          <li>{team.name} <Link to={"/teamsBy/" + team.id + "/" + team.name} className="btn btn-primary">Ver plantilla</Link></li>
+
         )
       )
     } else {
@@ -58,11 +69,13 @@ class TeamsList extends React.Component {
         <div className="site-section">
           <div className="container">
             <h2 className="h6 text-uppercase text-black font-weight-bold mb-3">Equipos</h2>
-            <div className="row text-center">
+            <ol id="lista4">
               {teamsHtml}
-            </div>
+            </ol>
           </div>
         </div>
+
+
         <Footer />
       </div>
 
