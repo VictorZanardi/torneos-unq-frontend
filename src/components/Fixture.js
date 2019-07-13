@@ -62,7 +62,7 @@ render(){
               </Col>
               -
               <Col sm>
-                {game.teamAName}
+                {game.teamBName}
               </Col>
             </Row>
           </Form>
@@ -90,7 +90,7 @@ render(){
     <br/>
     <br/>
     <div>
-        {(fixtures.length == 0) &&
+        {(fixtures.length <= 1) &&
         
            <div style={{textAlign:"center", marginLeft:10}}>    
             <Button variant="primary" onClick={this.fixtureGenerate}>Crear Fixture</Button>
