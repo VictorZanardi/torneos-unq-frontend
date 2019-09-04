@@ -100,7 +100,7 @@ class TeamDetail extends Component {
   delete(id) {
     axios.delete('/api/deletePlayer/' + id)
       .then(function (response) {
-        alert("Subasta Eliminada!!!");
+        alert("Jugador Eliminado!!!");
         window.location.reload();
       });
   }
