@@ -56,7 +56,7 @@ class Header extends React.Component {
           <li><a href="/MatchesList">Partidos</a></li>
           <li><a href="/TeamsList">Equipos</a></li>
           <li><a href="/LoadTeam">Cargar Equipo</a></li>
-          <li><a href="/" onClick={this.logout}>Logout</a></li>
+          <li><a href="/" onClick={this.logout}>Cerrar Sesión</a></li>
         </ul>
       );
     } else {
@@ -64,7 +64,8 @@ class Header extends React.Component {
         <ul className="site-menu js-clone-nav d-none d-md-block">
           <li><a href="/">Inicio</a></li>
           <li><a href="/Statistic">Estadisticas</a></li>
-          <li><a href="/login">Login</a></li>
+          <li><a href="/login">Iniciar Sesión</a></li>
+          <li><a href="/registration"> Registrarse</a></li>
         </ul>
       );
     }
