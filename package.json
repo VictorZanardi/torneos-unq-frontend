@@ -14,7 +14,7 @@
     "react-moment": "^0.9.2",
     "react-responsive-carousel": "^3.1.47",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.8",
+    "react-scripts": "5.0.1",
     "reactjs-popup": "^1.4.0"
   },
   "devDependencies": {
